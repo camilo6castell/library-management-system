@@ -6,11 +6,11 @@ public class Loan {
     private String author;
     private String status;
 
-    public Loan(String reader, String title, String author, String status ) {
+    public Loan(String reader, String title, String author) {
         this.reader = reader;
         this.title = title;
         this.author = author;
-        this.status = status;
+        this.status = "Required";
     }
 
     public String getReader() {
