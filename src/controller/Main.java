@@ -17,11 +17,11 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         // ADMIN
-        Administrator admin = new Administrator("John Doe", "test",
-                "test");
-        // Administrator admin = new Administrator("John Doe", "administrador@pingu.com.co",
-        //        "contraseñasegura123456");
-        //
+        //Administrator admin = new Administrator("John Doe", "test",
+        //        "test");
+        Administrator admin = new Administrator("John Doe", "administrador@pingu.com.co",
+                "contraseñasegura123456");
+
 
         // BOOKS ARRAY
         ArrayList<Book> libraryBooks = new ArrayList<>();
@@ -215,6 +215,7 @@ public class Main {
                                                             session = false;
                                                             loginAdmin = false;
                                                             login = false;
+                                                            break;
                                                     }
                                                 }
                                             }
@@ -1094,8 +1095,8 @@ public class Main {
                                                             System.out.println();
                                                             System.out.println("¿Qué deseas actualizar");
                                                             System.out.println();
-                                                            System.out.println("1 Actualizar libro");
-                                                            System.out.println("2 Actualizar novela");
+                                                            System.out.println("1 Pedir prestado libro");
+                                                            System.out.println("2 Pedir prestado novela");
                                                             System.out.println();
                                                             System.out.println("3 Ir al menú de atrás");
                                                             System.out.println("4 Salir");
@@ -1169,9 +1170,7 @@ public class Main {
                                                                     break;
                                                                 case 4:
                                                                     menuLevel = false;
-                                                                    session = false;
                                                                     loginReader = false;
-                                                                    login = false;
                                                                     break;
                                                             }
                                                         }
@@ -1210,26 +1209,26 @@ public class Main {
                         break;
                     }
                 case 2:
-                {
-                    System.out.println();
-                    System.out.println("Registrándote >");
-                    System.out.println();
-                    System.out.print("Ingresa tu nombre: ");
-                    String name = scanner.next();
-                    System.out.print("Ingresa tu email: ");
-                    String email = scanner.next();
-                    System.out.print("Ingresa tu password: ");
-                    String password = scanner.next();
-                    libraryReaders.add(new Reader(name, email,password));
-                    System.out.println();
-                    System.out.println("Has sido registrado con éxito!");
-                    System.out.print("Ingresa 1 para volver a menú anterior: ");
-                    scanner.next();
-                    System.out.println();
-                    System.out.print("_______________________________________________________________");
-                    System.out.println();
-                    break;
-                }
+                    if (session) {
+                        System.out.println();
+                        System.out.println("Registrándote >");
+                        System.out.println();
+                        System.out.print("Ingresa tu nombre: ");
+                        String name = scanner.next();
+                        System.out.print("Ingresa tu email: ");
+                        String email = scanner.next();
+                        System.out.print("Ingresa tu password: ");
+                        String password = scanner.next();
+                        libraryReaders.add(new Reader(name, email, password));
+                        System.out.println();
+                        System.out.println("Has sido registrado con éxito!");
+                        System.out.print("Ingresa 1 para volver a menú anterior: ");
+                        scanner.next();
+                        System.out.println();
+                        System.out.print("_______________________________________________________________");
+                        System.out.println();
+                        break;
+                    }
                 case 3:
                     session = false;
                     break;
