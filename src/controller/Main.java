@@ -27,22 +27,21 @@ public class Main {
             System.out.print("Digite el número de la opción deseada: ");
             option = scanner.nextInt();
             switch (option) {
-                case 1:
-                    Session.logIn();
-                    break;
-                case 2:
-                    //registrarse();
-                    break;
-                case 0:
-                    System.out.println("_______________________________________________________________" +
-                            "\n\nPrograma terminado. ¡Vuelva pronto a nuestra biblioteca!\n" +
-                            "_______________________________________________________________");
+                case 1 -> Session.logIn();
+                case 2 -> {}//registrarse();
+                case 0 -> {
+                    System.out.println("""
+                                    _______________________________________________________________
+
+                                    Programa terminado. ¡Vuelva pronto a nuestra biblioteca!
+                                    
+                                    _______________________________________________________________""");
                     isOn = false;
-                    break;
-                default:
+                }
+                default -> {
                     System.out.println("Opción inválida");
                     isOn = false;
-                    break;
+                }
             }
         }
     }

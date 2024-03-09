@@ -5,13 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7dc15904-927c-46ba-862e-44cd556a4943" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/controller/library/AdministratorSession.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/library/AssistantSession.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/library/ReaderSession.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/library/Session.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/data/DataBase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/library/AdministratorSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/library/AdministratorSession.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/library/AssistantSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/library/AssistantSession.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/library/ReaderSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/library/ReaderSession.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/library/Session.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/library/Session.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/loans/Loan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/loans/Loan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/texts/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/texts/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/texts/Novel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/texts/Novel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/users/Administrator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/users/Administrator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/users/Reader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/users/Reader.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

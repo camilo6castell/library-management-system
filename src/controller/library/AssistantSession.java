@@ -39,35 +39,21 @@ public class AssistantSession {
             System.out.print("_______________________________________________________________");
             System.out.println();
             switch (optionMenu1) {
-                case 1:
-                    Menu1(assistant);
-                    break;
-                case 2:
-                    Menu2(assistant);
-                    break;
-                case 3:
-                    Menu3(assistant);
-                    break;
-                case 4:
-                    Menu4(assistant);
-                    break;
-                case 5:
-                    Menu5(assistant);
-                    break;
-                case 6:
-                    Menu6(assistant);
-                    break;
-                case 7:
-                    loginAssistant = false;
-                    break;
-                case 0:
-                    System.out.println("""
+                case 1 -> Menu1(assistant);
+                case 2 -> Menu2(assistant);
+                case 3 -> Menu3(assistant);
+                case 4 -> Menu4(assistant);
+                case 5 -> Menu5(assistant);
+                case 6 -> Menu6(assistant);
+                case 7 -> loginAssistant = false;
+                case 0 -> {System.out.println("""
                             _______________________________________________________________
 
                             Programa terminado. ¡Vuelva pronto a nuestra biblioteca!
                             _______________________________________________________________""");
-                    System.exit(0);
-                    break;
+                    System.exit(0);}
+
+
             }
         }
     }
@@ -500,7 +486,7 @@ public class AssistantSession {
         System.out.print("Ingrese el email del lector: ");
         String reader = scanner.next();
         for (Loan loan : DataBase.libraryLoans) {
-            if (loan.getReader().equals(reader)) {
+            if (loan.getEmail().equals(reader)) {
                 assistant.setLoanDone(DataBase.libraryLoans, loan);
                 break;
             }
@@ -522,7 +508,7 @@ public class AssistantSession {
         System.out.print("Ingrese el email del lector: ");
         String reader = scanner.next();
         for (Loan loan : DataBase.libraryLoans) {
-            if (loan.getReader().equals(reader)) {
+            if (loan.getEmail().equals(reader)) {
                 assistant.setLoanFinalized(DataBase.libraryLoans, loan);
                 break;
             }

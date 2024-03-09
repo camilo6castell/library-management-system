@@ -1,5 +1,13 @@
 package model.texts;
 
+import model.loans.Loan;
+import model.users.Reader;
+
+import java.util.Scanner;
+
+import static data.DataBase.libraryLoans;
+import static data.DataBase.libraryNovels;
+
 public class Novel extends Text {
     private String genre;
     private int suggestedReadingAge;
@@ -24,6 +32,24 @@ public class Novel extends Text {
 
     public void setSuggestedReadingAge(int suggestedReadingAge) {
         this.suggestedReadingAge = suggestedReadingAge;
+    }
+
+    public static void setNovelLoan(Reader reader){
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Ingrese el código de la novela a pedir prestada: ");
+        int index = scanner.nextInt();
+        Novel novelForLoan = libraryNovels.get(index - 1);
+        novelForLoan.setAvailable(novelForLoan.getAvailable()-1);
+        novelForLoan.setOnLoan(novelForLoan.getOnLoan()+1);
+        Loan.createLoan(libraryLoans, reader.getEmail(), novelForLoan.getTitle(), novelForLoan.getAuthor());
+        System.out.println();
+        System.out.format("""
+                         Préstamo de la novela '%s' requerido.
+                         
+                         Recuerda acercarte a un asistente de biblioteca para recibir el libro deseado.""", novelForLoan.getTitle());
+        System.out.println();
+        System.out.print("Ingresa 1 para volver a menú anterior: ");
+        scanner.next();
     }
 }
 

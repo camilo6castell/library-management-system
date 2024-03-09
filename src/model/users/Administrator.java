@@ -1,8 +1,5 @@
 package model.users;
 
-import model.users.Assistant;
-import model.users.Reader;
-
 import model.texts.Book;
 import model.texts.Novel;
 
@@ -16,7 +13,7 @@ public class Administrator extends User {
     }
 
     // BOOKS METHODS
-    public ArrayList<Book> addBook(ArrayList<Book> libraryBooks, String title, String author, int quantity,
+    public void addBook(ArrayList<Book> libraryBooks, String title, String author, int quantity,
                                    int available, int onLoan, String knowledgeArea, int pages) {
         boolean isBook = libraryBooks.stream().anyMatch(object -> object.getTitle().equals(title));
         if (isBook) {
@@ -27,10 +24,9 @@ public class Administrator extends User {
             libraryBooks.add(newBook);
             System.out.println("El libro con el título " + title + " ha sido agregado a nuestra biblioteca.");
         }
-        return libraryBooks;
     }
 
-    public ArrayList<Book> updateBook(ArrayList<Book> libraryBooks, Book outDatedBook, Book upDatedBook) {
+    public void updateBook(ArrayList<Book> libraryBooks, Book outDatedBook, Book upDatedBook) {
         int index = libraryBooks.indexOf(outDatedBook);
         if (index == -1) {
             System.out.println("El libro que quieres actualizar no está registrado.");
@@ -38,10 +34,9 @@ public class Administrator extends User {
             libraryBooks.set(index, upDatedBook);
             System.out.println("El libro ha sido actualizado correctamente.");
         }
-        return libraryBooks;
     }
 
-    public ArrayList<Book> deleteBook(ArrayList<Book> libraryBooks, Book toDeleteBook) {
+    public void deleteBook(ArrayList<Book> libraryBooks, Book toDeleteBook) {
         int index = libraryBooks.indexOf(toDeleteBook);
         if (index == -1) {
             System.out.println("El libro que quieres eliminar no está registrado.");
@@ -49,16 +44,9 @@ public class Administrator extends User {
             libraryBooks.remove(index);
             System.out.println("El libro ha sido eliminado correctamente.");
         }
-        return libraryBooks;
     }
 
     public void getBooks(ArrayList<Book> libraryBooks) {
-        // for (Book book : libraryBooks) {
-        //    System.out.println("Título: " + book.getTitle());
-        //    System.out.println("Autor: " + book.getAuthor());
-        //    System.out.println("Páginas: " + book.getPages());
-        //    System.out.println();
-        //}
         for (int i = 0; i < libraryBooks.size(); i++) {
             Book book = libraryBooks.get(i);
             System.out.format("%d Titulo: %s - Autor: %s - Páginas: %d\n", i + 1, book.getTitle(), book.getAuthor(), book.getPages());
@@ -67,7 +55,7 @@ public class Administrator extends User {
 
     //
     // NOVELS METHODS
-    public ArrayList<Novel> addNovel(ArrayList<Novel> libraryNovels, String title, String author, int quantity,
+    public void addNovel(ArrayList<Novel> libraryNovels, String title, String author, int quantity,
                                     int available, int onLoan, String genre, int suggestedReadingAge) {
         boolean isBook = libraryNovels.stream().anyMatch(object -> object.getTitle().equals(title));
         if (isBook) {
@@ -78,10 +66,9 @@ public class Administrator extends User {
             libraryNovels.add(newNovel);
             System.out.println("La novela con el título " + title + " ha sido agregado a nuestra biblioteca.");
         }
-        return libraryNovels;
     }
 
-    public ArrayList<Novel> updateNovel(ArrayList<Novel> libraryNovels, Novel outDatedNovel, Novel upDatedNovel) {
+    public void updateNovel(ArrayList<Novel> libraryNovels, Novel outDatedNovel, Novel upDatedNovel) {
         int index = libraryNovels.indexOf(outDatedNovel);
         if (index == -1) {
             System.out.println("La novela que quieres actualizar no está registrada.");
@@ -89,10 +76,9 @@ public class Administrator extends User {
             libraryNovels.set(index, upDatedNovel);
             System.out.println("El novela ha sido actualizado correctamente.");
         }
-        return libraryNovels;
     }
 
-    public ArrayList<Novel> deleteNovel(ArrayList<Novel> libraryNovels, Novel toDeleteNovel) {
+    public void deleteNovel(ArrayList<Novel> libraryNovels, Novel toDeleteNovel) {
         int index = libraryNovels.indexOf(toDeleteNovel);
         if (index == -1) {
             System.out.println("La novela que quieres eliminar no está registrada.");
@@ -100,7 +86,6 @@ public class Administrator extends User {
             libraryNovels.remove(index);
             System.out.println("La novela ha sido eliminado correctamente.");
         }
-        return libraryNovels;
     }
 
     public void  getNovels(ArrayList<Novel> libraryNovels) {
@@ -118,11 +103,9 @@ public class Administrator extends User {
 
     //
     // ASSISTANT METHODS
-    public ArrayList<Assistant> addAssistant(ArrayList<Assistant> libraryAssistants, String name, String email,
+    public void addAssistant(ArrayList<Assistant> libraryAssistants, String name, String email,
                                              String password) {
         libraryAssistants.add(new Assistant(name, email, password));
-        return libraryAssistants;
-
     }
 
     public void  getAssistans(ArrayList<Assistant> libraryAssistants) {

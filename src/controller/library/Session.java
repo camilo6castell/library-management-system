@@ -20,6 +20,7 @@ public class Session {
                 _______________________________________________________________
 
                 ** Iniciar sesión **
+                
                 """);
 
         System.out.print("Digite su correo electrónico: ");
@@ -33,7 +34,13 @@ public class Session {
         isUser = isReader(email, password, isUser);
 
         if (!isUser) {
-            System.out.println("Credenciales incorrectas");
+            System.out.println("""
+                _______________________________________________________________
+
+                Credenciales incorrectas
+                """);
+            System.out.print("Digite 1 para volver al menú principal: ");
+            scanner.next();
         }
     }
 

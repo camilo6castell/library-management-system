@@ -1,5 +1,13 @@
 package model.texts;
 
+import model.loans.Loan;
+import model.users.Reader;
+
+import java.util.Scanner;
+
+import static data.DataBase.libraryBooks;
+import static data.DataBase.libraryLoans;
+
 public class Book extends Text {
     private String knowledgeArea;
     private int pages;
@@ -24,5 +32,23 @@ public class Book extends Text {
 
     public void setPages(int pages) {
         this.pages = pages;
+    }
+
+    public static void setBookLoan(Reader reader){
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Ingrese el código del libro a pedir prestado: ");
+        int index = scanner.nextInt();
+        Book bookForLoan = libraryBooks.get(index - 1);
+        bookForLoan.setAvailable(bookForLoan.getAvailable()-1);
+        bookForLoan.setOnLoan(bookForLoan.getOnLoan()+1);
+        Loan.createLoan(libraryLoans, reader.getEmail(), bookForLoan.getTitle(), bookForLoan.getAuthor());
+        System.out.println();
+        System.out.format("""
+                         Préstamo del libro '%s' requerido.
+                         
+                         Recuerda acercarte a un asistente de biblioteca para recibir el libro deseado.""", bookForLoan.getTitle());
+        System.out.println();
+        System.out.print("Ingresa 1 para volver a menú anterior: ");
+        scanner.next();
     }
 }

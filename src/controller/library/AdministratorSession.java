@@ -106,23 +106,24 @@ public class AdministratorSession {
             int option = Integer.parseInt(scanner.next());
             System.out.println();
             switch (option) {
-                case 1:
+                case 1 ->
                     Menu11(administrator);
-                    break;
-                case 2:
+                    //break;
+                case 2 ->
                     Menu12(administrator);
-                    break;
-                case 3:
+                    //break;
+                case 3 ->
                     menu1 = false;
-                    break;
-                case 0:
+                    //break;
+                case 0 -> {
                     System.out.println("""
                             _______________________________________________________________
 
                             Programa terminado. ¡Vuelva pronto a nuestra biblioteca!
                             _______________________________________________________________""");
                     System.exit(0);
-                default:
+                }
+                default ->
                     throw new IllegalStateException("Opción no contemplada: " + option);
             }
         }
