@@ -1,10 +1,10 @@
 package usecases.ui;
 
-import usecases.interfaces.IUseCaseObject;
+import usecases.interfaces.IUseCase;
 
 import java.util.Scanner;
 
-public class ShowAlertMessage implements IUseCaseObject<String> {
+public class ShowAlertMessageUseCase implements IUseCase<String, Object> {
 
     @Override
     public String execute(String message) {
@@ -12,5 +12,15 @@ public class ShowAlertMessage implements IUseCaseObject<String> {
         System.out.println(message);
         System.out.print("Ingrese cualquier valor para continuar: ");
         return scanner.next();
+    }
+
+    @Override
+    public String execute() {
+        return null;
+    }
+
+    @Override
+    public Object execute(String firstValue, String secondValue) {
+        return null;
     }
 }

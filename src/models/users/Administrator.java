@@ -13,28 +13,7 @@ public class Administrator extends User {
     }
 
     // BOOKS METHODS
-    public void addBook(ArrayList<Book> libraryBooks, String title, String author, int quantity,
-                                   int available, int onLoan, String knowledgeArea, int pages) {
-        boolean isBook = libraryBooks.stream().anyMatch(object -> object.getTitle().equals(title));
-        if (isBook) {
-            System.out.println("El libro con el título " + title + " ya se encuentra en nuestro registro. El libro " +
-                    "no se agregará a la biblioteca.");
-        } else {
-            Book newBook = new Book(title, author, quantity, available, onLoan, knowledgeArea, pages);
-            libraryBooks.add(newBook);
-            System.out.println("El libro con el título " + title + " ha sido agregado a nuestra biblioteca.");
-        }
-    }
 
-    public void updateBook(ArrayList<Book> libraryBooks, Book outDatedBook, Book upDatedBook) {
-        int index = libraryBooks.indexOf(outDatedBook);
-        if (index == -1) {
-            System.out.println("El libro que quieres actualizar no está registrado.");
-        } else {
-            libraryBooks.set(index, upDatedBook);
-            System.out.println("El libro ha sido actualizado correctamente.");
-        }
-    }
 
     public void deleteBook(ArrayList<Book> libraryBooks, Book toDeleteBook) {
         int index = libraryBooks.indexOf(toDeleteBook);
@@ -55,28 +34,8 @@ public class Administrator extends User {
 
     //
     // NOVELS METHODS
-    public void addNovel(ArrayList<Novel> libraryNovels, String title, String author, int quantity,
-                                    int available, int onLoan, String genre, int suggestedReadingAge) {
-        boolean isBook = libraryNovels.stream().anyMatch(object -> object.getTitle().equals(title));
-        if (isBook) {
-            System.out.println("La novela con el título " + title + " ya se encuentra en nuestro registro. " +
-                    "La novela no se agregará a la biblioteca.");
-        } else {
-            Novel newNovel = new Novel(title, author, quantity, available, onLoan, genre, suggestedReadingAge);
-            libraryNovels.add(newNovel);
-            System.out.println("La novela con el título " + title + " ha sido agregado a nuestra biblioteca.");
-        }
-    }
 
-    public void updateNovel(ArrayList<Novel> libraryNovels, Novel outDatedNovel, Novel upDatedNovel) {
-        int index = libraryNovels.indexOf(outDatedNovel);
-        if (index == -1) {
-            System.out.println("La novela que quieres actualizar no está registrada.");
-        } else {
-            libraryNovels.set(index, upDatedNovel);
-            System.out.println("El novela ha sido actualizado correctamente.");
-        }
-    }
+
 
     public void deleteNovel(ArrayList<Novel> libraryNovels, Novel toDeleteNovel) {
         int index = libraryNovels.indexOf(toDeleteNovel);

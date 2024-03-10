@@ -6,6 +6,11 @@ import java.util.Scanner;
 
 public class ShowLogInMenuUseCase implements IUseCase {
     @Override
+    public Object execute(Object value) {
+        return null;
+    }
+
+    @Override
     public void execute() {
         Scanner scanner = new Scanner(System.in);
 
@@ -25,11 +30,16 @@ public class ShowLogInMenuUseCase implements IUseCase {
         new LoginAdministratorUseCase().execute(email, password);
         new LoginAssistantUseCase().execute(email, password);
         new LoginReaderUseCase().execute(email, password);
-        new ShowAlertMessage().execute("""
+        new ShowAlertMessageUseCase().execute("""
                 _______________________________________________________________
 
                 Credenciales incorrectas
                 
                 """);
+    }
+
+    @Override
+    public Object execute(Object firstValue, Object secondValue) {
+        return null;
     }
 }

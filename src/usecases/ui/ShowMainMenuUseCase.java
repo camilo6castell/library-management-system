@@ -5,13 +5,18 @@ import validations.Option;
 
 import java.util.HashMap;
 
-public class ShowMainMenuUseCase implements IUseCase {
+public class ShowMainMenuUseCase implements IUseCase<Object, Object> {
 
-    public void execute() {
+    @Override
+    public Object execute(Object value) {
+        return null;
+    }
+
+    public Object execute() {
         HashMap<Integer, IUseCase> mainMenuCases = new HashMap<>();
         mainMenuCases.put(1, new ShowLogInMenuUseCase());
         mainMenuCases.put(2, new ShowLogInMenuUseCase());
-        mainMenuCases.put(0, new ExitProgram());
+        mainMenuCases.put(0, new ExitProgramUseCase());
         do {
             String option = new AskOptionMenuUseCase().execute("""
                 _______________________________________________________________
@@ -30,7 +35,7 @@ public class ShowMainMenuUseCase implements IUseCase {
                 int validatedOption = Integer.parseInt(option);
                 mainMenuCases.get(validatedOption).execute();
             } else{
-                new ShowAlertMessage().execute("""
+                new ShowAlertMessageUseCase().execute("""
                 _______________________________________________________________
 
 
@@ -40,5 +45,10 @@ public class ShowMainMenuUseCase implements IUseCase {
                 """);
             }
         } while (true);
+    }
+
+    @Override
+    public Object execute(Object firstValue, Object secondValue) {
+        return null;
     }
 }
