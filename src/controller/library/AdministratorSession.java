@@ -1,9 +1,9 @@
 package controller.library;
 
-import model.texts.Book;
-import model.texts.Novel;
+import models.texts.Book;
+import models.texts.Novel;
 
-import model.users.Administrator;
+import models.users.Administrator;
 
 import java.util.Scanner;
 

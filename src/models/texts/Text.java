@@ -1,4 +1,4 @@
-package model.texts;
+package models.texts;
 
 public abstract class Text {
 

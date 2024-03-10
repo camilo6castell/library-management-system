@@ -2,12 +2,12 @@ package controller.library;
 
 import data.DataBase;
 
-import model.loans.Loan;
+import models.loans.Loan;
 
-import model.texts.Book;
-import model.texts.Novel;
+import models.texts.Book;
+import models.texts.Novel;
 
-import model.users.Assistant;
+import models.users.Assistant;
 
 import java.util.Scanner;
 

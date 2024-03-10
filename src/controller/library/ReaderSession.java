@@ -2,10 +2,10 @@ package controller.library;
 
 import data.DataBase;
 
-import model.loans.Loan;
-import model.texts.Book;
-import model.texts.Novel;
-import model.users.Reader;
+import models.loans.Loan;
+import models.texts.Book;
+import models.texts.Novel;
+import models.users.Reader;
 
 import java.util.Scanner;
 

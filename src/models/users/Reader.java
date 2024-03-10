@@ -1,17 +1,11 @@
-package model.users;
+package models.users;
 
-import data.DataBase;
-import model.texts.Book;
-import model.texts.Novel;
-
-import model.loans.Loan;
+import models.texts.Book;
+import models.texts.Novel;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
-
-import static data.DataBase.*;
 
 public class Reader extends User {
     public Reader(String name, String email, String password) {

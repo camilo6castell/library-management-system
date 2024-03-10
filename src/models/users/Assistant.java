@@ -1,8 +1,8 @@
-package model.users;
+package models.users;
 
-import model.texts.Book;
-import model.texts.Novel;
-import model.loans.Loan;
+import models.texts.Book;
+import models.texts.Novel;
+import models.loans.Loan;
 
 import java.util.ArrayList;
 

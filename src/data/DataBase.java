@@ -1,11 +1,11 @@
 package data;
 
-import model.loans.Loan;
-import model.texts.Book;
-import model.texts.Novel;
-import model.users.Administrator;
-import model.users.Assistant;
-import model.users.Reader;
+import models.loans.Loan;
+import models.texts.Book;
+import models.texts.Novel;
+import models.users.Administrator;
+import models.users.Assistant;
+import models.users.Reader;
 
 import java.util.ArrayList;
 

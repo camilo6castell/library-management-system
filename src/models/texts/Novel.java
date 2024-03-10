@@ -1,7 +1,7 @@
-package model.texts;
+package models.texts;
 
-import model.loans.Loan;
-import model.users.Reader;
+import models.loans.Loan;
+import models.users.Reader;
 
 import java.util.Scanner;
 
