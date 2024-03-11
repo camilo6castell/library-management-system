@@ -16,6 +16,7 @@ public class ShowBooksAvailableToBorrowMenuUseCase implements IUseCase<Object, O
         System.out.println("Mostrando libros disponibles para préstamo >>");
         System.out.println();
         new ShowAllAvailableBooksToBorrow().execute();
+        System.out.println();
         new AddBookLoanUseCase().execute();
     }
 

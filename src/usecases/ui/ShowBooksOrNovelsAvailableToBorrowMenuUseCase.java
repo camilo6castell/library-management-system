@@ -22,12 +22,12 @@ public class ShowBooksOrNovelsAvailableToBorrowMenuUseCase implements IUseCase<O
             String option = new AskOptionMenuUseCase().execute("""
                      _______________________________________________________________
 
-                     Agregar libro o novela
+                    Libros o novelas disponibles
                                      
-                    ¿Qué deseas agregar?
+                    ¿Qué deseas listar?
                                      
-                    1 Agregar libro
-                    2 Agregar novela
+                    1 listar libros diponibles
+                    2 listar novelas disponibles
                                    
                     3 Ir al menú de atrás
                     0 Terminar programa

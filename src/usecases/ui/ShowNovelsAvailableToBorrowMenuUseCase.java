@@ -17,6 +17,7 @@ public class ShowNovelsAvailableToBorrowMenuUseCase implements IUseCase<Object, 
         System.out.println("Mostrando novelas disponibles para préstamo >>");
         System.out.println();
         new ShowAllAvailableNovelsToBorrow().execute();
+        System.out.println();
         new AddNovelLoanUseCase().execute();
     }
 

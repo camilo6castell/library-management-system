@@ -1,6 +1,7 @@
 package usecases.ui;
 
 import usecases.interfaces.IUseCase;
+import usecases.reader.AddReaderUseCase;
 import validations.Option;
 
 import java.util.HashMap;
@@ -15,7 +16,7 @@ public class ShowMainMenuUseCase implements IUseCase<Object, Object> {
     public void execute() {
         HashMap<Integer, IUseCase> mainMenuCases = new HashMap<>();
         mainMenuCases.put(1, new ShowLogInMenuUseCase());
-        mainMenuCases.put(2, new ShowLogInMenuUseCase());
+        mainMenuCases.put(2, new AddReaderUseCase());
         mainMenuCases.put(0, new ExitProgramUseCase());
         do {
             String option = new AskOptionMenuUseCase().execute("""

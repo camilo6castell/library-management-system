@@ -1,6 +1,6 @@
 package models.texts;
 
-public abstract class Text {
+public class Text {
 
     private String title;
     private String author;
