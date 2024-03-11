@@ -4,7 +4,7 @@ import usecases.interfaces.IUseCase;
 
 import java.util.Scanner;
 
-public class ShowLogInMenuUseCase implements IUseCase {
+public class ShowLogInMenuUseCase implements IUseCase<Object, Object> {
     @Override
     public Object execute(Object value) {
         return null;

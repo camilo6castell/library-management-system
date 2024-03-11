@@ -2,9 +2,14 @@ package usecases.book;
 
 import data.DataBase;
 import models.texts.Book;
-import usecases.interfaces.TextUseCase;
+import usecases.interfaces.IUseCase;
 
-public class ShowAllBooksUseCase implements TextUseCase<Object, Object, Object> {
+public class ShowAllBooksUseCase implements IUseCase<Object, Object> {
+    @Override
+    public Object execute(Object value) {
+        return null;
+    }
+
     @Override
     public void execute() {
         for (int i = 0; i < DataBase.libraryBooks.size(); i++) {
@@ -14,12 +19,7 @@ public class ShowAllBooksUseCase implements TextUseCase<Object, Object, Object> 
     }
 
     @Override
-    public Object execute(Object valueA, Object valueB, Object valueBB) {
-        return null;
-    }
-
-    @Override
-    public Object execute(Object valueA, Object valueB, Object valueBB, Object valueC, Object valueCC, Object valueCCCC, Object valueBBB, Object valueCCC) {
+    public Object execute(Object firstValue, Object secondValue) {
         return null;
     }
 }

@@ -7,6 +7,21 @@ import java.util.ArrayList;
 
 public class AddNovelUseCase implements TextUseCase<ArrayList<Novel>, String, Integer> {
     @Override
+    public void execute() {
+
+    }
+
+    @Override
+    public void execute(ArrayList<Novel> valueA, String valueB) {
+
+    }
+
+    @Override
+    public ArrayList<Novel> execute(ArrayList<Novel> valueA, String valueB, String valueBB) {
+        return null;
+    }
+
+    @Override
     public ArrayList<Novel> execute(ArrayList<Novel> libraryNovels, String title, String author, Integer quantity,
                                    Integer available, Integer onLoan, String genre, Integer suggestedReadingAge) {
         boolean isNovel = libraryNovels.stream().anyMatch(object -> object.getTitle().equals(title));

@@ -15,6 +15,11 @@ public class ShowAllNovelsUseCase implements TextUseCase<Object, Object, Object>
     }
 
     @Override
+    public void execute(Object valueA, Object valueB) {
+
+    }
+
+    @Override
     public Object execute(Object valueA, Object valueB, Object valueBB) {
         return null;
     }

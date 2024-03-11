@@ -10,23 +10,28 @@ import java.util.HashMap;
 public class ShowAdministratorMenuUseCase implements IUseCase<Administrator, Object> {
 
     @Override
-    public Administrator execute(Administrator administrator) {
+    public Administrator execute(Administrator value) {
+        return null;
+    }
+
+    @Override
+    public void execute() {
         HashMap<Integer, IUseCase> administratorMenuUseCases = new HashMap<>();
         administratorMenuUseCases.put(1, new ShowAddBookOrNovelMenuUseCase());
         administratorMenuUseCases.put(2, new ShowUpdateBookOrNovelMenuUseCase());
-        administratorMenuUseCases.put(3, );
-        administratorMenuUseCases.put(4, );
-        administratorMenuUseCases.put(5, );
-        administratorMenuUseCases.put(6, );
-        administratorMenuUseCases.put(7, );
-        administratorMenuUseCases.put(8, );
-        administratorMenuUseCases.put(9, new CloseSessionUseCase());
+        administratorMenuUseCases.put(3, new ShowDeleteBookOrNovelMenuUseCase());
+        administratorMenuUseCases.put(4, new ShowAllBooksOrNovelsUseCase());
+        administratorMenuUseCases.put(5, new ShowAllBooksAndNovelsMenuUseCase());
+        administratorMenuUseCases.put(6, new AddAssistantMenuUseCase());
+        administratorMenuUseCases.put(7, new ShowAllReadersMenuUseCase());
+        administratorMenuUseCases.put(8, new ShowAllAssistantsMenuUseCase());
+        administratorMenuUseCases.put(9, new ShowMainMenuUseCase());
         administratorMenuUseCases.put(0, new ExitProgramUseCase());
         do {
             String option = new AskOptionMenuUseCase().execute("""
                     _______________________________________________________________
 
-                    Bienvenido admin %s
+                    Bienvenido admin
                                                         
                     ¿Qué deseas hacer?
                                                         
@@ -44,7 +49,7 @@ public class ShowAdministratorMenuUseCase implements IUseCase<Administrator, Obj
                     9 Cerrar sesión
                     0 Terminar programa
                                                         
-                    """, administrator.getName());
+                    """);
             if (Option.isValid(option, 9)) {
                 int validatedOption = Integer.parseInt(option);
                 administratorMenuUseCases.get(validatedOption).execute();
@@ -59,11 +64,7 @@ public class ShowAdministratorMenuUseCase implements IUseCase<Administrator, Obj
                     """);
             }
         } while (true);
-        return null;
     }
-
-    @Override
-    public void execute() {}
 
     @Override
     public Administrator execute(Administrator firstValue, Administrator secondValue) {

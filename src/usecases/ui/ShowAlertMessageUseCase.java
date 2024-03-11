@@ -15,9 +15,7 @@ public class ShowAlertMessageUseCase implements IUseCase<String, Object> {
     }
 
     @Override
-    public String execute() {
-        return null;
-    }
+    public void execute() {}
 
     @Override
     public Object execute(String firstValue, String secondValue) {

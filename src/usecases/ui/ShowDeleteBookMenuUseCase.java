@@ -2,25 +2,30 @@ package usecases.ui;
 
 import data.DataBase;
 import models.texts.Book;
+import usecases.book.DeleteBookUseCase;
 import usecases.book.ShowAllBooksUseCase;
-import usecases.book.UpdateBookUseCase;
 import usecases.interfaces.IUseCase;
 
 import java.util.Scanner;
 
-public class ShowUpdateBookMenuUseCase implements IUseCase<Object, Object> {
+public class ShowDeleteBookMenuUseCase implements IUseCase<Object, Object> {
     @Override
     public void execute() {
+        Scanner scanner = new Scanner(System.in);
         System.out.println("""
                 _______________________________________________________________
 
-                Actualizando libro >>
+                Eliminando libro >>
                             
-                Elija el libro que desea actualizar
+                Elije el libro que deseas eliminar
                 
                 """);
         new ShowAllBooksUseCase().execute();
-        new UpdateBookUseCase().execute();
+        System.out.println();
+        System.out.print("Digita el número del libro a eliminar: ");
+        int libraryBookIndex = Integer.parseInt(scanner.next());
+        Book toDeleteBook = DataBase.libraryBooks.get(libraryBookIndex - 1);
+        new DeleteBookUseCase().execute(DataBase.libraryBooks, toDeleteBook);
         new ShowAlertMessageUseCase().execute("\n");
     }
 

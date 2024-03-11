@@ -11,15 +11,13 @@ public class LoginAdministratorUseCase implements IUseCase<String, Boolean> {
     }
 
     @Override
-    public String execute() {
-        return null;
-    }
+    public void execute() {}
 
     @Override
     public Boolean execute(String email, String password) {
         for (Administrator administrator : DataBase.libraryAdministrators) {
             if (administrator.getEmail().equals(email) && administrator.getPassword().equals(password)) {
-                new ShowAdministratorMenuUseCase().execute(administrator);
+                new ShowAdministratorMenuUseCase().execute();
             }
         }
         return false;

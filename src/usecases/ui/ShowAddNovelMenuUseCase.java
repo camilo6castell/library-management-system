@@ -13,7 +13,7 @@ public class ShowAddNovelMenuUseCase implements IUseCase<Object, Object> {
     }
 
     @Override
-    public Object execute() {
+    public void execute() {
         Scanner scanner = new Scanner(System.in);
         String title, author, genre;
         int quantity, available, onLoan, suggestedReadingAge;
@@ -39,7 +39,6 @@ public class ShowAddNovelMenuUseCase implements IUseCase<Object, Object> {
         new AddNovelUseCase().execute(DataBase.libraryNovels, title, author, quantity, available,
                 onLoan, genre, suggestedReadingAge);
         new ShowAlertMessageUseCase().execute("\n");
-        return null;
     }
 
     @Override

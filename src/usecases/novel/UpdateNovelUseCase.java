@@ -25,4 +25,9 @@ public class UpdateNovelUseCase implements TextUseCase<ArrayList<Novel>, Novel, 
 
     @Override
     public void execute() {}
+
+    @Override
+    public void execute(ArrayList<Novel> valueA, Novel valueB) {
+
+    }
 }

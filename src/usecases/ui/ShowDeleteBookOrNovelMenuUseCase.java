@@ -5,38 +5,32 @@ import validations.Option;
 
 import java.util.HashMap;
 
-public class ShowAddBookOrNovelMenuUseCase implements IUseCase<Object, Object> {
-
+public class ShowDeleteBookOrNovelMenuUseCase implements IUseCase<Class<?>, Object>{
     @Override
-    public Object execute(Object value) {
-        return null;
-    }
-
-    @Override
-    public void execute() {
-        HashMap<Integer, IUseCase> addBookOrNovelUseCases = new HashMap<>();
-        addBookOrNovelUseCases.put(1, new ShowAddBookMenuUseCase());
-        addBookOrNovelUseCases.put(2, new ShowAddNovelMenuUseCase());
-        addBookOrNovelUseCases.put(3, new ShowAdministratorMenuUseCase());
-        addBookOrNovelUseCases.put(0, new ExitProgramUseCase());
+    public Class<?> execute(Class<?> classInstance) {
+        HashMap<Integer, IUseCase> updateBookOrNovelUseCases = new HashMap<>();
+        updateBookOrNovelUseCases.put(1, new ShowDeleteBookMenuUseCase());
+        updateBookOrNovelUseCases.put(2, new ShowDeleteNovelMenuUseCase());
+        updateBookOrNovelUseCases.put(3, new ShowAdministratorMenuUseCase());
+        updateBookOrNovelUseCases.put(0, new ExitProgramUseCase());
         do {
             String option = new AskOptionMenuUseCase().execute("""
                      _______________________________________________________________
 
-                     Agregar libro o novela
-                                     
-                    ¿Qué deseas agregar?
-                                     
-                    1 Agregar libro
-                    2 Agregar novela
-                                   
+                    Eliminar libro o novela
+                                
+                    ¿Qué deseas eliminar?
+                                
+                    1 Eliminar libro
+                    2 Eliminar novela
+                                
                     3 Ir al menú de atrás
                     0 Terminar programa
                      
                      """);
             if (Option.isValid(option, 3)) {
                 int validatedOption = Integer.parseInt(option);
-                addBookOrNovelUseCases.get(validatedOption).execute();
+                updateBookOrNovelUseCases.get(validatedOption).execute(classInstance);
             } else {
                 new ShowAlertMessageUseCase().execute("""
                         _______________________________________________________________
@@ -51,8 +45,11 @@ public class ShowAddBookOrNovelMenuUseCase implements IUseCase<Object, Object> {
     }
 
     @Override
-    public Object execute(Object firstValue, Object secondValue) {
+    public void execute() {}
+
+    @Override
+    public Object execute(Class<?> firstValue, Class<?> secondValue) {
         return null;
     }
-
 }
+

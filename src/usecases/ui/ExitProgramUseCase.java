@@ -2,7 +2,7 @@ package usecases.ui;
 
 import usecases.interfaces.IUseCase;
 
-public class ExitProgramUseCase implements IUseCase{
+public class ExitProgramUseCase implements IUseCase<Object, Object> {
     @Override
     public Object execute(Object value) {
         return null;

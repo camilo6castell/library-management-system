@@ -12,7 +12,7 @@ public class ShowMainMenuUseCase implements IUseCase<Object, Object> {
         return null;
     }
 
-    public Object execute() {
+    public void execute() {
         HashMap<Integer, IUseCase> mainMenuCases = new HashMap<>();
         mainMenuCases.put(1, new ShowLogInMenuUseCase());
         mainMenuCases.put(2, new ShowLogInMenuUseCase());

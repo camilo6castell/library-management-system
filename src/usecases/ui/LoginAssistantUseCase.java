@@ -11,16 +11,13 @@ public class LoginAssistantUseCase implements IUseCase<String, Boolean> {
     }
 
     @Override
-    public String execute() {
-        return null;
-    }
+    public void execute() {}
 
     @Override
     public Boolean execute(String email, String password) {
         for (Assistant assistant : DataBase.libraryAssistants) {
             if (assistant.getEmail().equals(email) && assistant.getPassword().equals(password)) {
-                AssistantSession.AdministratorMenu(assistant);
-                return true;
+                new ShowAssistantMenuUseCase().execute();
             }
         }
         return false;
