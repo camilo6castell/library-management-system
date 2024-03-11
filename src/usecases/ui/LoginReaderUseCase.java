@@ -1,6 +1,8 @@
 package usecases.ui;
 
-import data.DataBase;
+import static data.DataBase.libraryReaders;
+import static data.DataBase.readerSession;
+
 import models.users.Reader;
 import usecases.interfaces.IUseCase;
 
@@ -15,10 +17,10 @@ public class LoginReaderUseCase implements IUseCase<String, Boolean> {
 
     @Override
     public Boolean execute(String email, String password) {
-        for (Reader reader : DataBase.libraryReaders) {
+        for (Reader reader : libraryReaders) {
             if (reader.getEmail().equals(email) && reader.getPassword().equals(password)) {
-                //ReaderSession.ReaderMenu();
-                return true;
+                readerSession = reader;
+                new ShowReaderMenuUseCase().execute();
             }
         }
         return false;

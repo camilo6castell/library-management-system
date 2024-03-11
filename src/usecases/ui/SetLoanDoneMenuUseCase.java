@@ -6,9 +6,14 @@ import usecases.loan.MarkLoanAsDoneUseCase;
 
 import java.util.Scanner;
 
-public class SetLoanDoneMenuUseCase implements IUseCase<String, Object> {
+public class SetLoanDoneMenuUseCase implements IUseCase<Object, Object> {
     @Override
-    public String execute(String value) {
+    public Object execute(Object value) {
+        return null;
+    }
+
+    @Override
+    public void execute() {
         Scanner scanner = new Scanner(System.in);
         System.out.println();
         System.out.println("Marcando préstamo como 'Realizado' >>");
@@ -19,16 +24,10 @@ public class SetLoanDoneMenuUseCase implements IUseCase<String, Object> {
         new FilterLoansRequiredByEmailUseCase().execute(email);
         System.out.println();
         new MarkLoanAsDoneUseCase().execute();
-        return null;
     }
 
     @Override
-    public void execute() {
-
-    }
-
-    @Override
-    public Object execute(String firstValue, String secondValue) {
+    public Object execute(Object firstValue, Object secondValue) {
         return null;
     }
 }

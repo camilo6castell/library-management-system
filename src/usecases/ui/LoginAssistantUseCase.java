@@ -1,6 +1,7 @@
 package usecases.ui;
 
-import data.DataBase;
+import static data.DataBase.libraryAssistants;
+import static data.DataBase.assistantSession;
 import models.users.Assistant;
 import usecases.interfaces.IUseCase;
 
@@ -15,8 +16,9 @@ public class LoginAssistantUseCase implements IUseCase<String, Boolean> {
 
     @Override
     public Boolean execute(String email, String password) {
-        for (Assistant assistant : DataBase.libraryAssistants) {
+        for (Assistant assistant : libraryAssistants) {
             if (assistant.getEmail().equals(email) && assistant.getPassword().equals(password)) {
+                assistantSession = assistant;
                 new ShowAssistantMenuUseCase().execute();
             }
         }

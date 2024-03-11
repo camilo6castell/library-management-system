@@ -1,6 +1,8 @@
 package usecases.ui;
 
-import data.DataBase;
+import static data.DataBase.libraryAdministrators;
+import static data.DataBase.administratorSession;
+
 import models.users.Administrator;
 import usecases.interfaces.IUseCase;
 
@@ -15,8 +17,9 @@ public class LoginAdministratorUseCase implements IUseCase<String, Boolean> {
 
     @Override
     public Boolean execute(String email, String password) {
-        for (Administrator administrator : DataBase.libraryAdministrators) {
+        for (Administrator administrator : libraryAdministrators) {
             if (administrator.getEmail().equals(email) && administrator.getPassword().equals(password)) {
+                administratorSession = administrator;
                 new ShowAdministratorMenuUseCase().execute();
             }
         }

@@ -16,6 +16,9 @@ public class DataBase {
     public static ArrayList<Assistant> libraryAssistants = new ArrayList<>();
     public static ArrayList<Reader> libraryReaders = new ArrayList<>();
     public static ArrayList<Loan> libraryLoans = new ArrayList<>();
+    public static Administrator administratorSession;
+    public static Assistant assistantSession;
+    public static Reader readerSession;
 
     static {
         // ADMIN ARRAY
@@ -37,51 +40,4 @@ public class DataBase {
         libraryLoans.add(new Loan("reader1", "El Conde de Montecristo", "Alexandre Dumas"));
     }
 
-    public static ArrayList<Administrator> getLibraryAdministrators() {
-        return libraryAdministrators;
-    }
-
-    public static void setLibraryAdministrators(ArrayList<Administrator> libraryAdministrators) {
-        DataBase.libraryAdministrators = libraryAdministrators;
-    }
-
-    public static ArrayList<Book> getLibraryBooks() {
-        return libraryBooks;
-    }
-
-    public static void setLibraryBooks(ArrayList<Book> libraryBooks) {
-        DataBase.libraryBooks = libraryBooks;
-    }
-
-    public static ArrayList<Novel> getLibraryNovels() {
-        return libraryNovels;
-    }
-
-    public static void setLibraryNovels(ArrayList<Novel> libraryNovels) {
-        DataBase.libraryNovels = libraryNovels;
-    }
-
-    public static ArrayList<Assistant> getLibraryAssistants() {
-        return libraryAssistants;
-    }
-
-    public static void setLibraryAssistants(ArrayList<Assistant> libraryAssistants) {
-        DataBase.libraryAssistants = libraryAssistants;
-    }
-
-    public static ArrayList<Reader> getLibraryReaders() {
-        return libraryReaders;
-    }
-
-    public static void setLibraryReaders(ArrayList<Reader> libraryReaders) {
-        DataBase.libraryReaders = libraryReaders;
-    }
-
-    public static ArrayList<Loan> getLibraryLoans() {
-        return libraryLoans;
-    }
-
-    public static void setLibraryLoans(ArrayList<Loan> libraryLoans) {
-        DataBase.libraryLoans = libraryLoans;
-    }
 }
