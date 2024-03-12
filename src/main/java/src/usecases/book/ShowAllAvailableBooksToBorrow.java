@@ -1,9 +1,9 @@
-package usecases.book;
+package src.usecases.book;
 
-import models.texts.Book;
-import usecases.interfaces.IUseCase;
+import src.models.texts.Book;
+import src.usecases.interfaces.IUseCase;
 
-import static data.DataBase.libraryBooks;
+import static src.data.DataBase.libraryBooks;
 
 public class ShowAllAvailableBooksToBorrow implements IUseCase<Object, Object> {
 

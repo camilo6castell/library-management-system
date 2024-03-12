@@ -1,23 +1,22 @@
-package models.texts;
+package src.models.texts;
 
-import models.loans.Loan;
-import models.users.Reader;
+import src.models.loans.Loan;
+import src.models.users.Reader;
 
 import java.util.Scanner;
 
-import static data.DataBase.libraryBooks;
-import static data.DataBase.libraryLoans;
+import static src.data.DataBase.libraryBooks;
+import static src.data.DataBase.libraryLoans;
 
 public class Book extends Text {
     private String knowledgeArea;
     private int pages;
 
-    public Book(String title, String author, int quantity, int available, int onLoan, String knowledgeArea, int pages) {
-        super(title, author, quantity, available, onLoan);
+    public Book(String title, String author, int quantity, String knowledgeArea, int pages) {
+        super(title, author, quantity);
         this.knowledgeArea = knowledgeArea;
         this.pages = pages;
     }
-
     public String getKnowledgeArea() {
         return knowledgeArea;
     }
@@ -32,23 +31,5 @@ public class Book extends Text {
 
     public void setPages(int pages) {
         this.pages = pages;
-    }
-
-    public static void setBookLoan(Reader reader){
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Ingrese el código del libro a pedir prestado: ");
-        int index = scanner.nextInt();
-        Book bookForLoan = libraryBooks.get(index - 1);
-        bookForLoan.setAvailable(bookForLoan.getAvailable()-1);
-        bookForLoan.setOnLoan(bookForLoan.getOnLoan()+1);
-        Loan.createLoan(libraryLoans, reader.getEmail(), bookForLoan.getTitle(), bookForLoan.getAuthor());
-        System.out.println();
-        System.out.format("""
-                         Préstamo del libro '%s' requerido.
-                         
-                         Recuerda acercarte a un asistente de biblioteca para recibir el libro deseado.""", bookForLoan.getTitle());
-        System.out.println();
-        System.out.print("Ingresa 1 para volver a menú anterior: ");
-        scanner.next();
     }
 }

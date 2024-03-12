@@ -1,7 +1,7 @@
-package usecases.novel;
+package src.usecases.novel;
 
-import models.texts.Novel;
-import usecases.interfaces.TextUseCase;
+import src.models.texts.Novel;
+import src.usecases.interfaces.TextUseCase;
 
 import java.util.ArrayList;
 

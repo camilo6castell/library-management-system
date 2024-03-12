@@ -1,14 +1,14 @@
-package usecases.loan;
+package src.usecases.loan;
 
-import static data.DataBase.libraryLoans;
-import static data.DataBase.libraryBooks;
-import static data.DataBase.readerSession;
+import static src.data.DataBase.libraryLoans;
+import static src.data.DataBase.libraryBooks;
+import static src.data.DataBase.readerSession;
 
 
-import models.loans.Loan;
-import models.texts.Book;
-import usecases.interfaces.IUseCase;
-import usecases.ui.ShowAlertMessageUseCase;
+import src.models.loans.Loan;
+import src.models.texts.Book;
+import src.usecases.interfaces.IUseCase;
+import src.usecases.ui.prompt.PromptForStringInputUseCase;
 
 import java.util.Scanner;
 
@@ -25,8 +25,8 @@ public class AddBookLoanUseCase implements IUseCase<Object, Object> {
         Book bookToBorrow = libraryBooks.get(scanner.nextInt());
         libraryLoans.add(new Loan(readerSession.getEmail(), bookToBorrow.getTitle(), bookToBorrow.getAuthor()));
         System.out.println();
-        new ShowAlertMessageUseCase().execute("Prestamos en estado 'Requerido'. Recuerda acercarte a un asistente " +
-                "para que te entregue el material solicitado.");
+        new PromptForStringInputUseCase().execute("Prestamos en estado 'Requerido'. Recuerda acercarte a un asistente " +
+                "para que te entregue el material solicitado.", scanner);
     }
 
     @Override

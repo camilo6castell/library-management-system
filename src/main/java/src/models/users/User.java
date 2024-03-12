@@ -1,4 +1,4 @@
-package models.users;
+package src.models.users;
 
 public abstract class User {
 

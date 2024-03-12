@@ -1,7 +1,7 @@
-package usecases.interfaces;
+package src.usecases.interfaces;
 
 public interface IUseCase<T, G> {
-    T execute(T value);
+    G execute(T value);
     void execute();
     G execute(T firstValue, T secondValue);
 }

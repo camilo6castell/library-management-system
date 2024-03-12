@@ -1,38 +1,17 @@
-package usecases.novel;
+package src.usecases.novel;
 
-import models.texts.Novel;
-import usecases.interfaces.TextUseCase;
+import static src.data.DataBase.libraryNovels;
+import src.models.texts.Novel;
 
-import java.util.ArrayList;
-
-public class AddNovelUseCase implements TextUseCase<ArrayList<Novel>, String, Integer> {
-    @Override
+public class AddNovelUseCase {
     public void execute() {
-
-    }
-
-    @Override
-    public void execute(ArrayList<Novel> valueA, String valueB) {
-
-    }
-
-    @Override
-    public ArrayList<Novel> execute(ArrayList<Novel> valueA, String valueB, String valueBB) {
-        return null;
-    }
-
-    @Override
-    public ArrayList<Novel> execute(ArrayList<Novel> libraryNovels, String title, String author, Integer quantity,
-                                   Integer available, Integer onLoan, String genre, Integer suggestedReadingAge) {
-        boolean isNovel = libraryNovels.stream().anyMatch(object -> object.getTitle().equals(title));
-        if (isNovel) {
-            System.out.println("La novela con el título " + title + " ya se encuentra en nuestro registro. " +
+        Novel newNovel = new AskForNewNovelUseCase().execute();
+        if (libraryNovels.stream().anyMatch(object -> object.getTitle().equals(newNovel.getTitle()))) {
+            System.out.println("La novela con el título " + newNovel.getTitle() + " ya se encuentra en nuestro registro. " +
                     "La novela no se agregará a la biblioteca.");
         } else {
-            Novel newNovel = new Novel(title, author, quantity, available, onLoan, genre, suggestedReadingAge);
             libraryNovels.add(newNovel);
-            System.out.println("La novela con el título " + title + " ha sido agregado a nuestra biblioteca.");
+            System.out.println("La novela con el título " + newNovel.getTitle() + " ha sido agregado a nuestra biblioteca.");
         }
-        return null;
     }
 }

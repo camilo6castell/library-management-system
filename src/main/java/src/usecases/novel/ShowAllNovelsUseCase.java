@@ -1,9 +1,9 @@
-package usecases.novel;
+package src.usecases.novel;
 
-import data.DataBase;
-import models.texts.Book;
-import models.texts.Novel;
-import usecases.interfaces.TextUseCase;
+import src.data.DataBase;
+import src.models.texts.Book;
+import src.models.texts.Novel;
+import src.usecases.interfaces.TextUseCase;
 
 public class ShowAllNovelsUseCase implements TextUseCase<Object, Object, Object> {
     @Override

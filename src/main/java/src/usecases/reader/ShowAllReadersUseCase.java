@@ -1,8 +1,8 @@
-package usecases.reader;
+package src.usecases.reader;
 
-import static data.DataBase.libraryReaders;
-import models.users.Reader;
-import usecases.interfaces.IUseCase;
+import static src.data.DataBase.libraryReaders;
+import src.models.users.Reader;
+import src.usecases.interfaces.IUseCase;
 
 public class ShowAllReadersUseCase implements IUseCase<Object, Object> {
     @Override

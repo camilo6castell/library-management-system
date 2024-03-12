@@ -1,9 +1,9 @@
-package usecases.loan;
+package src.usecases.loan;
 
-import static data.DataBase.libraryLoans;
+import static src.data.DataBase.libraryLoans;
 
-import models.loans.Loan;
-import usecases.interfaces.IUseCase;
+import src.models.loans.Loan;
+import src.usecases.interfaces.IUseCase;
 
 public class FilterLoansRequiredByEmailUseCase implements IUseCase<String, Object> {
     @Override

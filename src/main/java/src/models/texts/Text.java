@@ -1,4 +1,4 @@
-package models.texts;
+package src.models.texts;
 
 public class Text {
 
@@ -8,12 +8,12 @@ public class Text {
     private int available;
     private int onLoan;
 
-    public Text(String title, String author, int quantity, int available, int onLoan ) {
+    public Text(String title, String author, int quantity ) {
         this.title = title;
         this.author = author;
         this.quantity = quantity;
-        this.available = available;
-        this.onLoan = onLoan;
+        this.available = quantity;
+        this.onLoan = 0;
     }
 
     public String getTitle() {

@@ -1,9 +1,9 @@
-package usecases.novel;
+package src.usecases.novel;
 
-import models.texts.Novel;
-import usecases.interfaces.IUseCase;
+import src.models.texts.Novel;
+import src.usecases.interfaces.IUseCase;
 
-import static data.DataBase.libraryNovels;
+import static src.data.DataBase.libraryNovels;
 
 public class ShowAllAvailableNovelsToBorrow implements IUseCase<Object, Object> {
     @Override

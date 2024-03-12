@@ -1,7 +1,7 @@
-package usecases.book;
+package src.usecases.book;
 
-import models.texts.Book;
-import usecases.interfaces.TextUseCase;
+import src.models.texts.Book;
+import src.usecases.interfaces.TextUseCase;
 
 import java.util.ArrayList;
 

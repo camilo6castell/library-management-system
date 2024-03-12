@@ -1,4 +1,4 @@
-package models.enums;
+package src.models.enums;
 
 public enum UserRole {
     ADMINISTRATOR,

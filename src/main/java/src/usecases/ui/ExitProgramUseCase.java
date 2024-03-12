@@ -1,6 +1,6 @@
-package usecases.ui;
+package src.usecases.ui;
 
-import usecases.interfaces.IUseCase;
+import src.usecases.interfaces.IUseCase;
 
 public class ExitProgramUseCase implements IUseCase<Object, Object> {
     @Override

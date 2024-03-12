@@ -1,12 +1,12 @@
-package usecases.loan;
+package src.usecases.loan;
 
-import models.loans.Loan;
-import usecases.interfaces.IUseCase;
-import usecases.ui.ShowAlertMessageUseCase;
+import src.models.loans.Loan;
+import src.usecases.interfaces.IUseCase;
+import src.usecases.ui.prompt.PromptForStringInputUseCase;
 
 import java.util.Scanner;
 
-import static data.DataBase.libraryLoans;
+import static src.data.DataBase.libraryLoans;
 
 public class MarkLoanAsFinalizedUseCase implements IUseCase<Loan, Object> {
     @Override
@@ -22,7 +22,7 @@ public class MarkLoanAsFinalizedUseCase implements IUseCase<Loan, Object> {
 
         if (loanToSetDoneIndex < 0 || loanToSetDoneIndex >= libraryLoans.size()) {
             System.out.println("El índice del libro a actualizar no existe");
-            new ShowAlertMessageUseCase().execute("\n");
+            new PromptForStringInputUseCase().execute("Ingrese cualquier valor para continuar: ", scanner);
         }
         libraryLoans.get(loanToSetDoneIndex).setStatus("Finalized");
         System.out.println("Prestamos marcado como 'Realizado.");

@@ -1,11 +1,11 @@
-package usecases.assistant;
+package src.usecases.assistant;
 
-import models.users.Assistant;
-import usecases.interfaces.IUseCase;
+import src.models.users.Assistant;
+import src.usecases.interfaces.IUseCase;
 
 import java.util.Scanner;
 
-import static data.DataBase.libraryAssistants;
+import static src.data.DataBase.libraryAssistants;
 
 public class AddAssistantUseCase implements IUseCase<Object, Object> {
 

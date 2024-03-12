@@ -1,40 +1,38 @@
-package usecases.book;
+package src.usecases.book;
 
-import static data.DataBase.libraryBooks;
+import static src.data.DataBase.libraryBooks;
 
-import data.DataBase;
-import models.texts.Book;
-import usecases.interfaces.IUseCase;
-import usecases.ui.ShowAlertMessageUseCase;
+import src.models.texts.Book;
+import src.usecases.ui.prompt.PromptForIntegerInputUseCase;
+import src.usecases.ui.prompt.PromptForStringInputUseCase;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
-public class UpdateBookUseCase implements IUseCase<Book, Object> {
+public class UpdateBookUseCase {
 
-    @Override
     public Book execute(Book outdatedBook) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Actualizando libro >\n");
+        System.out.println("Actualizando libro >>");
+        System.out.println();
         System.out.println("Titulo actual: " + outdatedBook.getTitle());
-        String title = promptForInput("Nuevo titulo: ", scanner);
+        String title = new PromptForStringInputUseCase().execute("Nuevo titulo: ", scanner);
+        System.out.println();
         System.out.println("Autor actual: " + outdatedBook.getAuthor());
-        String author = promptForInput("Nuevo autor: ", scanner);
+        String author = new PromptForStringInputUseCase().execute("Nuevo autor: ", scanner);
+        System.out.println();
         System.out.println("Área de conocimiento actual: " + outdatedBook.getKnowledgeArea());
-        String knowledgeArea = promptForInput("Nueva Área de conocimiento: ", scanner);
+        String knowledgeArea = new PromptForStringInputUseCase().execute("Nueva Área de conocimiento: ", scanner);
+        System.out.println();
         System.out.println("Cantidad actual: " + outdatedBook.getQuantity());
-        int quantity = promptForIntegerInput("Nueva cantidad: ", scanner);
-        System.out.println("Cantidad de disponibles para préstamo actual: " + outdatedBook.getAvailable());
-        int available = promptForIntegerInput("Nueva cantidad de disponibles para préstamo: ", scanner);
-        System.out.println("Cantidad en préstamo actual: " + outdatedBook.getOnLoan());
-        int onLoan = promptForIntegerInput("Nueva cantidad de disponibles para préstamo: ", scanner);
+        int quantity = new PromptForIntegerInputUseCase().execute("Nueva cantidad: ", scanner);
+        System.out.println();
         System.out.println("Cantidad de páginas actual: " + outdatedBook.getPages());
-        int pages = promptForIntegerInput("Nueva cantidad de páginas: ", scanner);
-        return new Book(title, author, quantity, available, onLoan, knowledgeArea, pages);
+        int pages = new PromptForIntegerInputUseCase().execute("Nueva cantidad de páginas: ", scanner);
+        System.out.println();
+        return new Book(title, author, quantity, knowledgeArea, pages);
 
     }
 
-    @Override
     public void execute() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Digita el número del libro a actualizar: ");
@@ -43,7 +41,8 @@ public class UpdateBookUseCase implements IUseCase<Book, Object> {
 
         if (outdatedLibraryBookIndex < 0 || outdatedLibraryBookIndex >= libraryBooks.size()) {
             System.out.println("El índice del libro a actualizar no existe");
-            new ShowAlertMessageUseCase().execute("\n");
+            new PromptForStringInputUseCase().execute("Ingrese cualquier valor para continuar: ", scanner);
+            System.out.println();
             return;
         }
         Book outdatedBook = libraryBooks.get(outdatedLibraryBookIndex);
@@ -52,21 +51,5 @@ public class UpdateBookUseCase implements IUseCase<Book, Object> {
         libraryBooks.set(index, updatedBook);
         System.out.println("El libro ha sido actualizado correctamente.");
 
-    }
-
-    @Override
-    public Object execute(Book firstValue, Book secondValue) {
-        return null;
-    }
-
-
-    private int promptForIntegerInput(String message, Scanner scanner) {
-        System.out.print(message);
-        return Integer.parseInt(scanner.nextLine());
-    }
-
-    private String promptForInput(String message, Scanner scanner) {
-        System.out.print(message);
-        return scanner.nextLine();
     }
 }

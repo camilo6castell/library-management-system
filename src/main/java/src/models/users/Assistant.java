@@ -1,4 +1,4 @@
-package models.users;
+package src.models.users;
 
 public class Assistant extends User {
     public Assistant(String name, String email, String password) {

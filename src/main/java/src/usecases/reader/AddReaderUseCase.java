@@ -1,10 +1,10 @@
-package usecases.reader;
+package src.usecases.reader;
 
-import static data.DataBase.libraryReaders;
+import static src.data.DataBase.libraryReaders;
 
-import models.users.Reader;
-import usecases.interfaces.IUseCase;
-import usecases.ui.ShowAlertMessageUseCase;
+import src.models.users.Reader;
+import src.usecases.interfaces.IUseCase;
+import src.usecases.ui.prompt.PromptForStringInputUseCase;
 
 import java.util.Scanner;
 
@@ -32,7 +32,7 @@ public class AddReaderUseCase implements IUseCase<Object, Object> {
         libraryReaders.add(new Reader(name, email, password));
         System.out.println();
         System.out.println("Usuario Creado con éxito. Ahora puedes iniciar sesión. ");
-        new ShowAlertMessageUseCase().execute("\n");
+        new PromptForStringInputUseCase().execute("Ingrese cualquier valor para continuar: ", scanner);
     }
 
     @Override

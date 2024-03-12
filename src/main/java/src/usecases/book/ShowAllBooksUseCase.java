@@ -1,8 +1,8 @@
-package usecases.book;
+package src.usecases.book;
 
-import data.DataBase;
-import models.texts.Book;
-import usecases.interfaces.IUseCase;
+import src.data.DataBase;
+import src.models.texts.Book;
+import src.usecases.interfaces.IUseCase;
 
 public class ShowAllBooksUseCase implements IUseCase<Object, Object> {
     @Override

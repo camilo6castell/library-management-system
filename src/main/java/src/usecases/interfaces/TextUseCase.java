@@ -1,4 +1,4 @@
-package usecases.interfaces;
+package src.usecases.interfaces;
 
 public interface TextUseCase<A, B, C>{
     void execute();

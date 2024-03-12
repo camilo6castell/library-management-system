@@ -1,4 +1,4 @@
-package models.loans;
+package src.models.loans;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
