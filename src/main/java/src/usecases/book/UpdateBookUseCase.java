@@ -10,8 +10,7 @@ import java.util.Scanner;
 
 public class UpdateBookUseCase {
 
-    public Book execute(Book outdatedBook) {
-        Scanner scanner = new Scanner(System.in);
+    public Book execute(Book outdatedBook, Scanner scanner) {
         System.out.println("Actualizando libro >>");
         System.out.println();
         System.out.println("Titulo actual: " + outdatedBook.getTitle());
@@ -30,7 +29,6 @@ public class UpdateBookUseCase {
         int pages = new PromptForIntegerInputUseCase().execute("Nueva cantidad de páginas: ", scanner);
         System.out.println();
         return new Book(title, author, quantity, knowledgeArea, pages);
-
     }
 
     public void execute() {
@@ -43,13 +41,12 @@ public class UpdateBookUseCase {
             System.out.println("El índice del libro a actualizar no existe");
             new PromptForStringInputUseCase().execute("Ingrese cualquier valor para continuar: ", scanner);
             System.out.println();
-            return;
+        } else {
+            Book outdatedBook = libraryBooks.get(outdatedLibraryBookIndex);
+            Book updatedBook = new UpdateBookUseCase().execute(outdatedBook, scanner);
+            int index = libraryBooks.indexOf(outdatedBook);
+            libraryBooks.set(index, updatedBook);
+            System.out.println("El libro ha sido actualizado correctamente.");
         }
-        Book outdatedBook = libraryBooks.get(outdatedLibraryBookIndex);
-        Book updatedBook = new UpdateBookUseCase().execute(outdatedBook);
-        int index = libraryBooks.indexOf(outdatedBook);
-        libraryBooks.set(index, updatedBook);
-        System.out.println("El libro ha sido actualizado correctamente.");
-
     }
 }

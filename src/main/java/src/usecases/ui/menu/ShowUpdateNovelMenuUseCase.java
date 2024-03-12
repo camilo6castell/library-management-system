@@ -25,13 +25,7 @@ public class ShowUpdateNovelMenuUseCase implements IUseCase<Object, Object> {
                 
                 """);
         new ShowAllNovelsUseCase().execute();
-        System.out.println();
-        int libraryNovelIndex = new PromptForIntegerInputUseCase().execute("Digita el número de la novela a actualizar: ", scanner);
-        System.out.println();
-        System.out.print("_______________________________________________________________");
-        System.out.println();
-        Novel outDatedNovel = libraryNovels.get(libraryNovelIndex - 1);
-        new UpdateNovelUseCase().execute(outDatedNovel, new AskForUpdateNewNovelUseCase().execute(outDatedNovel, scanner));
+        new UpdateNovelUseCase().execute();
         new PromptForStringInputUseCase().execute("Ingrese cualquier valor para continuar: ", scanner);
         System.out.println();
     }

@@ -7,8 +7,7 @@ import src.usecases.ui.prompt.PromptForStringInputUseCase;
 import java.util.Scanner;
 
 public class AskForNewBookUseCase {
-    public Book execute() {
-        Scanner scanner = new Scanner(System.in);
+    public Book execute(Scanner scanner) {
         String title, author, knowledgeArea;
         int quantity, pages;
         System.out.println();
@@ -21,8 +20,8 @@ public class AskForNewBookUseCase {
         knowledgeArea = new PromptForStringInputUseCase().execute("Área del conocimiento: ", scanner);
         System.out.println();
         quantity = new PromptForIntegerInputUseCase().execute("Cantidad de la libro a ingresar: ", scanner);
-        System.out.print("Páginas: ");
-        pages = scanner.nextInt();
+        System.out.println();
+        pages = new PromptForIntegerInputUseCase().execute("Páginas: ", scanner);
         System.out.println();
         return new Book(title, author, quantity, knowledgeArea, pages);
     }
