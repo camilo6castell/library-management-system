@@ -34,18 +34,19 @@ public class UpdateNovelUseCase {
     public void execute() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Digita el número de la novela a actualizar: ");
-        int outdatedLibraryNovelIndex = Integer.parseInt(scanner.nextLine()) - 1;
+        int selectedIndex = Integer.parseInt(scanner.nextLine()) - 1;
         System.out.println("\n_______________________________________________________________\n");
 
-        if (outdatedLibraryNovelIndex < 0 || outdatedLibraryNovelIndex >= libraryNovels.size()) {
+        if (selectedIndex < 0 || selectedIndex >= libraryNovels.size()) {
             System.out.println("El índice de la nocela a actualizar no existe");
             new PromptForStringInputUseCase().execute("Ingrese cualquier valor para continuar: ", scanner);
             System.out.println();
         } else {
-            Novel outdatedNovel = libraryNovels.get(outdatedLibraryNovelIndex);
-            Novel updatedNovel = new UpdateNovelUseCase().execute(outdatedNovel, scanner);
-            int index = libraryNovels.indexOf(outdatedNovel);
-            libraryNovels.set(index, updatedNovel);
+            // CLONED NOVEL
+            Novel clonedNovel = libraryNovels.get(selectedIndex).clone();
+            //
+            Novel updatedNovel = new UpdateNovelUseCase().execute(clonedNovel, scanner);
+            libraryNovels.set(selectedIndex, updatedNovel);
             System.out.println("El libro ha sido actualizado correctamente.");
         }
     }

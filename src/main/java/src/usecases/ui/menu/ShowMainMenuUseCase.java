@@ -27,9 +27,11 @@ public class ShowMainMenuUseCase implements IUseCase<Object, Object> {
             String option = new AskForOptionMenuUseCase().execute("""
                 _______________________________________________________________
 
-                ** Biblioteca La Pingüinera **
+                Biblioteca La Pingüinera
                 
-                Bienvenido!
+                Bienvenid@s!
+                
+                Escoja una opción:
                 
                 1 Iniciar sesión
                 2 Registrarse

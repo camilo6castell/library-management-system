@@ -1,11 +1,9 @@
 package src.usecases.ui.menu;
 
-import src.models.users.Assistant;
 import src.usecases.assistant.AddAssistantUseCase;
 import src.usecases.interfaces.IUseCase;
 import src.usecases.ui.prompt.PromptForStringInputUseCase;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AddAssistantMenuUseCase implements IUseCase<Object, Object> {

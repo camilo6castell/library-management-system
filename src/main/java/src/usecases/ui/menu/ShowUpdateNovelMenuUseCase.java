@@ -1,13 +1,8 @@
 package src.usecases.ui.menu;
 
-import static src.data.DataBase.libraryNovels;
-
-import src.models.texts.Novel;
-import src.usecases.novel.AskForUpdateNewNovelUseCase;
 import src.usecases.novel.ShowAllNovelsUseCase;
 import src.usecases.novel.UpdateNovelUseCase;
 import src.usecases.interfaces.IUseCase;
-import src.usecases.ui.prompt.PromptForIntegerInputUseCase;
 import src.usecases.ui.prompt.PromptForStringInputUseCase;
 
 import java.util.Scanner;

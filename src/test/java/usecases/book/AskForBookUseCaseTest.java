@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class AskForBookUseCaseTest {
 
     // Instance creation for testing
-    AskForNewBookUseCase useCase = new AskForNewBookUseCase();
+    final AskForNewBookUseCase useCase = new AskForNewBookUseCase();
 
     @Mock
     private Scanner scannerMock;
@@ -36,7 +36,7 @@ public class AskForBookUseCaseTest {
                 .thenReturn("200");
 
         // ready for test
-        Book testBook = useCase.execute(scannerMock);
+        final Book testBook = useCase.execute(scannerMock);
         //Checking results
         assertEquals("La república", testBook.getTitle());
         assertEquals("Platon", testBook.getAuthor());

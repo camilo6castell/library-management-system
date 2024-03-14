@@ -19,15 +19,14 @@ public class ShowAllBooksAndNovelsMenuUseCase implements IUseCase<Object, Object
         System.out.println("""
                     
                     Lista de libros:
-                    
                 """);
         new ShowAllBooksUseCase().execute();
         System.out.println("""
                     
                     Lista de Novelas:
-                    
                 """);
         new ShowAllNovelsUseCase().execute();
+        System.out.println();
         new PromptForStringInputUseCase().execute("Ingrese cualquier valor para continuar: ", scanner);
         System.out.println();
     }

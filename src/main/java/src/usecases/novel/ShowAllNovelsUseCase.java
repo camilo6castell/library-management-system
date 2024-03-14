@@ -1,7 +1,6 @@
 package src.usecases.novel;
 
 import src.data.DataBase;
-import src.models.texts.Book;
 import src.models.texts.Novel;
 import src.usecases.interfaces.TextUseCase;
 

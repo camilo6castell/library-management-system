@@ -16,12 +16,12 @@ public class ShowUpdateBookMenuUseCase implements IUseCase<Object, Object> {
 
                 Actualizando libro >>
                             
-                Elija el libro que desea actualizar
-                
+                Lista de libros
                 """);
         new ShowAllBooksUseCase().execute();
         new UpdateBookUseCase().execute();
         new PromptForStringInputUseCase().execute("Ingrese cualquier valor para continuar: ", scanner);
+        System.out.println();
     }
 
     @Override

@@ -1,14 +1,6 @@
 package src.models.texts;
 
-import src.models.loans.Loan;
-import src.models.users.Reader;
-
-import java.util.Scanner;
-
-import static src.data.DataBase.libraryBooks;
-import static src.data.DataBase.libraryLoans;
-
-public class Book extends Text {
+public class Book extends Text implements Cloneable {
     private String knowledgeArea;
     private int pages;
 
@@ -31,5 +23,17 @@ public class Book extends Text {
 
     public void setPages(int pages) {
         this.pages = pages;
+    }
+
+    @Override
+    public Book clone() {
+        try {
+//            Book clone = (Book) super.clone();
+//            TODO: copy mutable state here, so the clone can't change the internals of the original
+//            return clone;
+            return (Book) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 }

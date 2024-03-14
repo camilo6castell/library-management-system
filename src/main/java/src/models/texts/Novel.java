@@ -1,6 +1,6 @@
 package src.models.texts;
 
-public class Novel extends Text {
+public class Novel extends Text implements Cloneable {
     private String genre;
     private int suggestedReadingAge;
 
@@ -24,6 +24,17 @@ public class Novel extends Text {
 
     public void setSuggestedReadingAge(int suggestedReadingAge) {
         this.suggestedReadingAge = suggestedReadingAge;
+    }
+
+    @Override
+    public Novel clone() {
+        try {
+            Novel clone = (Novel) super.clone();
+            // TODO: copy mutable state here, so the clone can't change the internals of the original
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 }
 
