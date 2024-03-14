@@ -42,9 +42,13 @@ public class UpdateBookUseCase {
             System.out.println("El índice del libro a actualizar no existe\n");
             System.out.println();
         } else {
+
             // CLONED BOOK
+
             Book clonedBook = libraryBooks.get(selectedIndex).clone();
+
             //
+
             Book updatedBook = new UpdateBookUseCase().execute(clonedBook, scanner);
             libraryBooks.set(selectedIndex, updatedBook);
             System.out.println("El libro ha sido actualizado correctamente.\n");

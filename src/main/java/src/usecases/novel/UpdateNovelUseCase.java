@@ -42,9 +42,13 @@ public class UpdateNovelUseCase {
             new PromptForStringInputUseCase().execute("Ingrese cualquier valor para continuar: ", scanner);
             System.out.println();
         } else {
+
             // CLONED NOVEL
+
             Novel clonedNovel = libraryNovels.get(selectedIndex).clone();
+
             //
+
             Novel updatedNovel = new UpdateNovelUseCase().execute(clonedNovel, scanner);
             libraryNovels.set(selectedIndex, updatedNovel);
             System.out.println("El libro ha sido actualizado correctamente.");
