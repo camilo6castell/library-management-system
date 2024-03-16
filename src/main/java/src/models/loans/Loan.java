@@ -66,22 +66,4 @@ public class Loan {
     public void setFinishDate(LocalDate finishDate) {
         this.finishDate = finishDate;
     }
-
-    // LOAN METHODS
-    public static void createLoan(ArrayList<Loan> libraryLoans, String reader, String title, String author) {
-        libraryLoans.add(new Loan(reader, title, author));
-    }
-
-    public static void loansByUser(ArrayList<Loan> libraryLoans, String email) {
-        // Recorrer el ArrayList de loans
-        for (Loan loan : libraryLoans) {
-            // Verificar si el email del préstamo coincide con el email buscado
-            if (loan.getEmail().equals(email)) {
-                // Imprimir el préstamo
-                System.out.println(loan.getCreationDate() + " || Título: " + loan.getTitle() +
-                        " - Autor: " + loan.getAuthor() + " - Estado: " + loan.getStatus() +
-                        " - Finalizado: " + loan.getFinishDate());
-            }
-        }
-    }
 }

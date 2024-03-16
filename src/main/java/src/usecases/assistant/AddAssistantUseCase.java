@@ -7,14 +7,8 @@ import java.util.Scanner;
 
 import static src.data.DataBase.libraryAssistants;
 
-public class AddAssistantUseCase implements IUseCase<Object, Object> {
+public class AddAssistantUseCase {
 
-    @Override
-    public Object execute(Object value) {
-        return null;
-    }
-
-    @Override
     public void execute() {
         Scanner scanner = new Scanner(System.in);
         System.out.println();
@@ -28,10 +22,5 @@ public class AddAssistantUseCase implements IUseCase<Object, Object> {
         String password = scanner.next();
         libraryAssistants.add(new Assistant(name, email, password));
         System.out.println("El asistente " + name + " se ha agregado correctamente.");
-    }
-
-    @Override
-    public Object execute(Object firstValue, Object secondValue) {
-        return null;
     }
 }

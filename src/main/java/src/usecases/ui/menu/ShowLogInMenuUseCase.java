@@ -25,6 +25,8 @@ public class ShowLogInMenuUseCase implements IUseCase<Object, Object> {
         String password = new PromptForStringInputUseCase().execute("Digite su contraseña: ", scanner);
         System.out.println();
 
+        // COMMAND PATTER IMPLEMENTED
+
         new Invoker().execute(email, password);
 
 //        new LoginAdministratorUseCase().execute(email, password);
