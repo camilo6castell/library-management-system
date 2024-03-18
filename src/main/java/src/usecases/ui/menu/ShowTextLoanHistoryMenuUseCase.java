@@ -1,7 +1,7 @@
 package src.usecases.ui.menu;
 
 import static src.data.DataBase.libraryLoans;
-import static src.data.DataBase.readerSession;
+import static src.data.DataBase.session;
 
 import src.models.loans.Loan;
 import src.usecases.interfaces.IUseCase;
@@ -22,8 +22,8 @@ public class ShowTextLoanHistoryMenuUseCase implements IUseCase<Object, Object> 
         System.out.println("Lista de préstamos:");
         System.out.println();
         for (Loan loan : libraryLoans){
-            if (loan.getEmail().equals(readerSession.getEmail())){
-                System.out.format("     %d - Titulo: %s - Fecha de creación: %s - Estado: %s", libraryLoans.indexOf(loan) + 1,
+            if (loan.getEmail().equals(session.getEmail())){
+                System.out.format("     %d - Titulo: %s - Fecha de creación: %s - Estado: %s\n", libraryLoans.indexOf(loan) + 1,
                         loan.getTitle(), loan.getCreationDate(), loan.getStatus());
             }
         }

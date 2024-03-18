@@ -11,6 +11,7 @@ public class ShowAllNovelsUseCase implements TextUseCase<Object, Object, Object>
             Novel novel = DataBase.libraryNovels.get(i);
             System.out.format("%d Titulo: %s - Autor: %s\n", i + 1, novel.getTitle(), novel.getAuthor());
         }
+        System.out.println();
     }
 
     @Override

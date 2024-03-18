@@ -1,10 +1,11 @@
 package src.usecases.ui.menu;
 
+import src.data.DataBase;
 import src.usecases.interfaces.IUseCase;
-import src.usecases.ui.prompt.AskForOptionMenuUseCase;
 import src.usecases.ui.ExitProgramUseCase;
+import src.usecases.ui.prompt.PromptForIntegerInputUseCase;
 import src.usecases.ui.prompt.PromptForStringInputUseCase;
-import src.validations.Option;
+import src.validations.IsValidMenuOption;
 
 import java.util.HashMap;
 import java.util.Scanner;
@@ -17,11 +18,11 @@ public class ShowUpdateBookOrNovelMenuUseCase implements IUseCase<Object, Object
         HashMap<Integer, IUseCase<Object, Object>> updateBookOrNovelUseCases = new HashMap<>();
         updateBookOrNovelUseCases.put(1, new ShowUpdateBookMenuUseCase());
         updateBookOrNovelUseCases.put(2, new ShowUpdateNovelMenuUseCase());
-        updateBookOrNovelUseCases.put(3, new ShowAdministratorMenuUseCase());
+        updateBookOrNovelUseCases.put(3, DataBase.session.getClass().getSimpleName().equals("Administrator") ? new ShowAdministratorMenuUseCase() : new ShowAssistantMenuUseCase());
         updateBookOrNovelUseCases.put(0, new ExitProgramUseCase());
         do {
-            String option = new AskForOptionMenuUseCase().execute("""
-                     _______________________________________________________________
+            Integer choseOption = new PromptForIntegerInputUseCase().execute("""
+                    _______________________________________________________________
 
                     Actualizar libro o novela
                                 
@@ -33,10 +34,9 @@ public class ShowUpdateBookOrNovelMenuUseCase implements IUseCase<Object, Object
                     3 Ir al menú de atrás
                     0 Terminar programa
                      
-                     """);
-            if (Option.isValid(option, 3)) {
-                int validatedOption = Integer.parseInt(option);
-                updateBookOrNovelUseCases.get(validatedOption).execute();
+                    Digite el número de la opción deseada:\s""", scanner);
+            if (IsValidMenuOption.execute(choseOption, 3)) {
+                updateBookOrNovelUseCases.get(choseOption).execute();
             } else {
                 new PromptForStringInputUseCase().execute("""
                         _______________________________________________________________
@@ -44,8 +44,8 @@ public class ShowUpdateBookOrNovelMenuUseCase implements IUseCase<Object, Object
 
                         Ha ingreso un valor incorrecto. El valor debe estar entre las
                         opciones mostradas.
-                                       
-                        """, scanner);
+                        
+                        Ingresa cualquier valor para volver a intentarlo:\s""", scanner);
             }
         } while (true);
     }

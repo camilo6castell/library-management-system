@@ -2,9 +2,9 @@ package src.usecases.ui.menu;
 
 import src.usecases.interfaces.IUseCase;
 import src.usecases.ui.*;
-import src.usecases.ui.prompt.AskForOptionMenuUseCase;
+import src.usecases.ui.prompt.PromptForIntegerInputUseCase;
 import src.usecases.ui.prompt.PromptForStringInputUseCase;
-import src.validations.Option;
+import src.validations.IsValidMenuOption;
 
 import java.util.HashMap;
 import java.util.Scanner;
@@ -25,7 +25,7 @@ public class ShowReaderMenuUseCase implements IUseCase<Object, Object> {
         assistantMenuUseCases.put(4, new ShowMainMenuUseCase());
         assistantMenuUseCases.put(0, new ExitProgramUseCase());
         do {
-            String option = new AskForOptionMenuUseCase().execute("""
+            Integer choseOption = new PromptForIntegerInputUseCase().execute("""
                     _______________________________________________________________
 
                     Bienvenido lector
@@ -39,20 +39,18 @@ public class ShowReaderMenuUseCase implements IUseCase<Object, Object> {
                                                      
                     4 Cerrar sesión
                     0 Terminar programa
-                                                        
-                    """);
-            if (Option.isValid(option, 5)) {
-                int validatedOption = Integer.parseInt(option);
-                assistantMenuUseCases.get(validatedOption).execute();
+                    
+                    Digite el número de la opción deseada:\s""", scanner);
+            if (IsValidMenuOption.execute(choseOption, 4)) {
+                assistantMenuUseCases.get(choseOption).execute();
             } else {
                 new PromptForStringInputUseCase().execute("""
                     _______________________________________________________________
 
-
                     Ha ingreso un valor incorrecto. El valor debe estar entre las
                     opciones mostradas.
                     
-                    """, scanner);
+                    Ingresa cualquier valor para volver a intentarlo:\s""", scanner);
             }
         } while (true);
     }

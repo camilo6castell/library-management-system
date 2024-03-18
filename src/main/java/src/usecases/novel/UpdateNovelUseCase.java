@@ -5,6 +5,7 @@ import static src.data.DataBase.libraryNovels;
 import src.models.texts.Novel;
 import src.usecases.ui.prompt.PromptForIntegerInputUseCase;
 import src.usecases.ui.prompt.PromptForStringInputUseCase;
+import src.validations.IsValidQuantity;
 
 import java.util.Scanner;
 
@@ -14,21 +15,21 @@ public class UpdateNovelUseCase {
         System.out.println("Actualizando Novela >>");
         System.out.println();
         System.out.println("Titulo actual: " + outdatedNovel.getTitle());
-        String title = new PromptForStringInputUseCase().execute("Nuevo titulo: ", scanner);
+        outdatedNovel.setTitle(new PromptForStringInputUseCase().execute("Nuevo titulo: ", scanner));
         System.out.println();
         System.out.println("Autor actual: " + outdatedNovel.getAuthor());
-        String author = new PromptForStringInputUseCase().execute("Nuevo autor: ", scanner);
+        outdatedNovel.setAuthor(new PromptForStringInputUseCase().execute("Nuevo autor: ", scanner));
         System.out.println();
         System.out.println("Género de la novela actual: " + outdatedNovel.getGenre());
-        String genre = new PromptForStringInputUseCase().execute("Nueva género de la novela: ", scanner);
+        outdatedNovel.setGenre(new PromptForStringInputUseCase().execute("Nueva género de la novela: ", scanner));
         System.out.println();
         System.out.println("Cantidad actual: " + outdatedNovel.getQuantity());
-        int quantity = new PromptForIntegerInputUseCase().execute("Nueva cantidad: ", scanner);
+        outdatedNovel.setQuantity(new IsValidQuantity().execute("Nueva cantidad: ", scanner));
         System.out.println();
         System.out.println("Edad sugerida de lectura actual: " + outdatedNovel.getSuggestedReadingAge());
-        int  suggestedReadingAge = new PromptForIntegerInputUseCase().execute("Nueva edad sugerida de lectura: ", scanner);
+        outdatedNovel.setSuggestedReadingAge(new IsValidQuantity().execute("Nueva edad sugerida de lectura: ", scanner));
         System.out.println();
-        return new Novel(title, author, quantity, genre,  suggestedReadingAge);
+        return outdatedNovel;
     }
 
     public void execute() {
@@ -38,7 +39,7 @@ public class UpdateNovelUseCase {
         System.out.println("\n_______________________________________________________________\n");
 
         if (selectedIndex < 0 || selectedIndex >= libraryNovels.size()) {
-            System.out.println("El índice de la nocela a actualizar no existe");
+            System.out.println("El índice de la novela a actualizar no existe");
             new PromptForStringInputUseCase().execute("Ingrese cualquier valor para continuar: ", scanner);
             System.out.println();
         } else {

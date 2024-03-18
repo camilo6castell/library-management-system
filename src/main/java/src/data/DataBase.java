@@ -6,6 +6,7 @@ import src.models.texts.Novel;
 import src.models.users.Administrator;
 import src.models.users.Assistant;
 import src.models.users.Reader;
+import src.models.users.User;
 
 import java.util.ArrayList;
 
@@ -16,13 +17,10 @@ public class DataBase {
     public static ArrayList<Assistant> libraryAssistants = new ArrayList<>();
     public static ArrayList<Reader> libraryReaders = new ArrayList<>();
     public static ArrayList<Loan> libraryLoans = new ArrayList<>();
-    public static Administrator administratorSession;
-    public static Assistant assistantSession;
-    public static Reader readerSession;
+    public static User session;
 
     static {
         // ADMIN ARRAY
-        libraryAdministrators.add(new Administrator("John Doe", "test","test"));
         libraryAdministrators.add(new Administrator("John Doe", "administrador@pingu.com.co","contraseñasegura123456"));
         // BOOKS ARRAY
         libraryBooks.add(new Book("El origen de las especies", "Charles Darwin", 4,  "Biología", 704));
@@ -41,11 +39,11 @@ public class DataBase {
         libraryNovels.add(new Novel("Crimen y castigo", "Fiódor Dostoievski", 11, "Social", 15));
         libraryNovels.add(new Novel("Crónica de una muerte anunciadao", "Gabriel García Márquez", 20, "Cultura", 15));
         // ASSISTANT ARRAY
-        libraryAssistants.add(new Assistant("asistente1", "asistente1", "asistente1"));
+        libraryAssistants.add(new Assistant("asistente1", "asistente1@asistente1.com", "asistente1"));
         // READERS ARRAY
-        libraryReaders.add(new Reader("reader1", "reader1", "reader1"));
+        libraryReaders.add(new Reader("reader1", "reader1@reader1.com", "reader1"));
         // LOANS ARRAY
-        libraryLoans.add(new Loan("reader1", "El Conde de Montecristo", "Alexandre Dumas"));
+        libraryLoans.add(new Loan("reader1@reader1.com", "El Conde de Montecristo", "Alexandre Dumas"));
     }
 
 }

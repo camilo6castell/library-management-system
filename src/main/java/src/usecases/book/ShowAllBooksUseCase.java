@@ -11,5 +11,6 @@ public class ShowAllBooksUseCase {
             Book book = DataBase.libraryBooks.get(i);
             System.out.format("%d - Titulo: %s - Autor: %s\n", i + 1, book.getTitle(), book.getAuthor());
         }
+        System.out.println();
     }
 }

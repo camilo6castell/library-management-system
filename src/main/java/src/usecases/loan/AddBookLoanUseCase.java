@@ -2,35 +2,38 @@ package src.usecases.loan;
 
 import static src.data.DataBase.libraryLoans;
 import static src.data.DataBase.libraryBooks;
-import static src.data.DataBase.readerSession;
+import static src.data.DataBase.session;
 
 
 import src.models.loans.Loan;
 import src.models.texts.Book;
-import src.usecases.interfaces.IUseCase;
+
 import src.usecases.ui.prompt.PromptForStringInputUseCase;
+import src.validations.IsValidQuantity;
 
 import java.util.Scanner;
 
-public class AddBookLoanUseCase implements IUseCase<Object, Object> {
-    @Override
-    public Object execute(Object value) {
-        return null;
-    }
+public class AddBookLoanUseCase {
 
-    @Override
     public void execute() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Ingrese el número del libro a pedir en préstamo: ");
-        Book bookToBorrow = libraryBooks.get(scanner.nextInt());
-        libraryLoans.add(new Loan(readerSession.getEmail(), bookToBorrow.getTitle(), bookToBorrow.getAuthor()));
+        int bookIndexToLoan;
+        do {
+            bookIndexToLoan = new IsValidQuantity().execute("Ingrese el número del libro a pedir en préstamo: ", scanner);
+        } while (bookIndexToLoan > libraryBooks.size());
+        Book bookToBorrow = libraryBooks.get( bookIndexToLoan - 1);
+        libraryLoans.add(new Loan(session.getEmail(), bookToBorrow.getTitle(), bookToBorrow.getAuthor()));
         System.out.println();
-        new PromptForStringInputUseCase().execute("Prestamos en estado 'Requerido'. Recuerda acercarte a un asistente " +
-                "para que te entregue el material solicitado.", scanner);
+        new PromptForStringInputUseCase().execute("""
+                _______________________________________________________________
+
+                Prestamo iniciado en estado 'Requerido'.
+                Recuerda acercarte a un asistente para que te entregue
+                el material solicitado.
+                                        
+                Ingresa cualquier valor para continuar:\s""", scanner);
+        System.out.println();
     }
 
-    @Override
-    public Object execute(Object firstValue, Object secondValue) {
-        return null;
-    }
+
 }

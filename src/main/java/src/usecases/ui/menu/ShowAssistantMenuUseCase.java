@@ -1,10 +1,10 @@
 package src.usecases.ui.menu;
 
 import src.usecases.interfaces.IUseCase;
-import src.usecases.ui.prompt.AskForOptionMenuUseCase;
 import src.usecases.ui.ExitProgramUseCase;
+import src.usecases.ui.prompt.PromptForIntegerInputUseCase;
 import src.usecases.ui.prompt.PromptForStringInputUseCase;
-import src.validations.Option;
+import src.validations.IsValidMenuOption;
 
 import java.util.HashMap;
 import java.util.Scanner;
@@ -25,13 +25,12 @@ public class ShowAssistantMenuUseCase implements IUseCase<Object, Object> {
         assistantMenuUseCases.put(3, new ShowDeleteBookOrNovelMenuUseCase());
         assistantMenuUseCases.put(4, new ShowAllBooksOrNovelsUseCase());
         assistantMenuUseCases.put(5, new ShowAllBooksAndNovelsMenuUseCase());
-        assistantMenuUseCases.put(6, new AddAssistantMenuUseCase());
-        assistantMenuUseCases.put(7, new SetLoanDoneMenuUseCase());
-        assistantMenuUseCases.put(8, new SetLoanFinalizedMenuUseCase());
-        assistantMenuUseCases.put(9, new ShowMainMenuUseCase());
+        assistantMenuUseCases.put(6, new SetLoanDoneMenuUseCase());
+        assistantMenuUseCases.put(7, new SetLoanFinalizedMenuUseCase());
+        assistantMenuUseCases.put(8, new ShowMainMenuUseCase());
         assistantMenuUseCases.put(0, new ExitProgramUseCase());
         do {
-            String option = new AskForOptionMenuUseCase().execute("""
+            Integer chosenOption = new PromptForIntegerInputUseCase().execute("""
                     _______________________________________________________________
 
                     Bienvenido asistente
@@ -49,11 +48,10 @@ public class ShowAssistantMenuUseCase implements IUseCase<Object, Object> {
                     
                     8 Cerrar sesión
                     0 Terminar programa
-                                                        
-                    """);
-            if (Option.isValid(option, 8)) {
-                int validatedOption = Integer.parseInt(option);
-                assistantMenuUseCases.get(validatedOption).execute();
+                    
+                    Digite el número de la opción deseada:\s""", scanner);
+            if (IsValidMenuOption.execute(chosenOption, 8)) {
+                assistantMenuUseCases.get(chosenOption).execute();
             } else {
                 new PromptForStringInputUseCase().execute("""
                     _______________________________________________________________
@@ -62,7 +60,7 @@ public class ShowAssistantMenuUseCase implements IUseCase<Object, Object> {
                     Ha ingreso un valor incorrecto. El valor debe estar entre las
                     opciones mostradas.
                     
-                    """, scanner);
+                    Ingresa cualquier valor para volver a intentarlo:\s""", scanner);
             }
         } while (true);
     }

@@ -5,6 +5,7 @@ import static src.data.DataBase.libraryBooks;
 import src.models.texts.Book;
 import src.usecases.ui.prompt.PromptForIntegerInputUseCase;
 import src.usecases.ui.prompt.PromptForStringInputUseCase;
+import src.validations.IsValidQuantity;
 
 import java.util.Scanner;
 
@@ -23,10 +24,10 @@ public class UpdateBookUseCase {
         clonedBook.setKnowledgeArea(new PromptForStringInputUseCase().execute("Nueva Área de conocimiento: ", scanner));
         System.out.println();
         System.out.println("Cantidad actual: " + clonedBook.getQuantity());
-        clonedBook.setQuantity(new PromptForIntegerInputUseCase().execute("Nueva cantidad: ", scanner));
+        clonedBook.setQuantity(new IsValidQuantity().execute("Nueva cantidad: ", scanner));
         System.out.println();
         System.out.println("Cantidad de páginas actual: " + clonedBook.getPages());
-        clonedBook.setPages(new PromptForIntegerInputUseCase().execute("Nueva cantidad de páginas: ", scanner));
+        clonedBook.setPages(new IsValidQuantity().execute("Nueva cantidad de páginas: ", scanner));
         System.out.println();
         return clonedBook;
     }

@@ -3,6 +3,7 @@ package src.usecases.book;
 import src.models.texts.Book;
 import src.usecases.ui.prompt.PromptForIntegerInputUseCase;
 import src.usecases.ui.prompt.PromptForStringInputUseCase;
+import src.validations.IsValidQuantity;
 
 import java.util.Scanner;
 
@@ -19,9 +20,9 @@ public class AskForNewBookUseCase {
         System.out.println();
         knowledgeArea = new PromptForStringInputUseCase().execute("Área del conocimiento: ", scanner);
         System.out.println();
-        quantity = new PromptForIntegerInputUseCase().execute("Cantidad de la libro a ingresar: ", scanner);
+        quantity = new IsValidQuantity().execute("Cantidad de la libro a ingresar: ", scanner);
         System.out.println();
-        pages = new PromptForIntegerInputUseCase().execute("Páginas: ", scanner);
+        pages = new IsValidQuantity().execute("Páginas: ", scanner);
         System.out.println();
         return new Book(title, author, quantity, knowledgeArea, pages);
     }

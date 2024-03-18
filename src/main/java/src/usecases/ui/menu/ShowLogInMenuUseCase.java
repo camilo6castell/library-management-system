@@ -16,8 +16,7 @@ public class ShowLogInMenuUseCase implements IUseCase<Object, Object> {
         System.out.println("""
                 _______________________________________________________________
 
-                ** Iniciar sesión **
-                                
+                Iniciar sesión
                 """);
 
 
@@ -29,18 +28,14 @@ public class ShowLogInMenuUseCase implements IUseCase<Object, Object> {
 
         new Invoker().execute(email, password);
 
-//        new LoginAdministratorUseCase().execute(email, password);
-//        new LoginAssistantUseCase().execute(email, password);
-//        new LoginReaderUseCase().execute(email, password);
+        //
 
         new PromptForStringInputUseCase().execute("""
                 _______________________________________________________________
 
                 Credenciales incorrectas
                 
-                Ingrese cualquier valor para continua:
-                
-                """, scanner);
+                Ingrese cualquier valor para continua:\s""", scanner);
     }
     @Override
     public Object execute(Object firstValue, Object secondValue) {

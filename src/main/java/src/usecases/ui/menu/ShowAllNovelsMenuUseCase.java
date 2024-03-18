@@ -16,8 +16,7 @@ public class ShowAllNovelsMenuUseCase implements IUseCase<Object, Object> {
     public void execute(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("""
-                Lista de Novelas:
-                
+                Lista de Novelas:                
                 """);
         new ShowAllNovelsUseCase().execute();
         new PromptForStringInputUseCase().execute("Ingrese cualquier valor para continuar: ", scanner);

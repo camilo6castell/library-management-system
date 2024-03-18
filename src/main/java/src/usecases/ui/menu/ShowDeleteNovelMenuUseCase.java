@@ -6,6 +6,7 @@ import src.usecases.interfaces.IUseCase;
 import src.usecases.novel.DeleteNovelUseCase;
 import src.usecases.novel.ShowAllNovelsUseCase;
 import src.usecases.ui.prompt.PromptForStringInputUseCase;
+import src.validations.IsValidQuantity;
 
 import java.util.Scanner;
 
@@ -23,8 +24,10 @@ public class ShowDeleteNovelMenuUseCase implements IUseCase<Object, Object> {
                 """);
         new ShowAllNovelsUseCase().execute();
         System.out.println();
-        System.out.print("Digita el número de la novela a eliminar: ");
-        int libraryNovelIndex = Integer.parseInt(scanner.next());
+        int libraryNovelIndex;
+        do {
+            libraryNovelIndex = new IsValidQuantity().execute("Digita el número de la novela a eliminar: ", scanner);
+        } while (libraryNovelIndex > DataBase.libraryNovels.size());
         Novel toDeleteNovel = DataBase.libraryNovels.get(libraryNovelIndex - 1);
         new DeleteNovelUseCase().execute(DataBase.libraryNovels, toDeleteNovel);
         new PromptForStringInputUseCase().execute("Ingrese cualquier valor para continuar: ", scanner);

@@ -3,6 +3,7 @@ package src.usecases.novel;
 import src.models.texts.Novel;
 import src.usecases.ui.prompt.PromptForIntegerInputUseCase;
 import src.usecases.ui.prompt.PromptForStringInputUseCase;
+import src.validations.IsValidQuantity;
 
 import java.util.Scanner;
 
@@ -19,9 +20,9 @@ public class AskForNewNovelUseCase {
         System.out.println();
         genre = new PromptForStringInputUseCase().execute("Género: ", scanner);
         System.out.println();
-        quantity = new PromptForIntegerInputUseCase().execute("Cantidad de la novela a ingresar: ", scanner);
+        quantity = new IsValidQuantity().execute("Cantidad de la novela a ingresar: ", scanner);
         System.out.println();
-        suggestedReadingAge = new PromptForIntegerInputUseCase().execute("Edad sugerida de lectura: ", scanner);
+        suggestedReadingAge = new IsValidQuantity().execute("Edad sugerida de lectura: ", scanner);
         System.out.println();
         return new Novel(title, author, quantity, genre, suggestedReadingAge);
     }

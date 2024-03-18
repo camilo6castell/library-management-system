@@ -1,10 +1,11 @@
 package src.usecases.ui.menu;
 
+import src.data.DataBase;
 import src.usecases.interfaces.IUseCase;
 import src.usecases.ui.*;
-import src.usecases.ui.prompt.AskForOptionMenuUseCase;
+import src.usecases.ui.prompt.PromptForIntegerInputUseCase;
 import src.usecases.ui.prompt.PromptForStringInputUseCase;
-import src.validations.Option;
+import src.validations.IsValidMenuOption;
 
 import java.util.HashMap;
 import java.util.Scanner;
@@ -22,13 +23,13 @@ public class ShowAddBookOrNovelMenuUseCase implements IUseCase<Object, Object> {
         HashMap<Integer, IUseCase<Object, Object>> addBookOrNovelUseCases = new HashMap<>();
         addBookOrNovelUseCases.put(1, new ShowAddBookMenuUseCase());
         addBookOrNovelUseCases.put(2, new ShowAddNovelMenuUseCase());
-        addBookOrNovelUseCases.put(3, new ShowAdministratorMenuUseCase());
+        addBookOrNovelUseCases.put(3, DataBase.session.getClass().getSimpleName().equals("Administrator") ? new ShowAdministratorMenuUseCase() : new ShowAssistantMenuUseCase());
         addBookOrNovelUseCases.put(0, new ExitProgramUseCase());
         do {
-            String option = new AskForOptionMenuUseCase().execute("""
-                     _______________________________________________________________
+            Integer chosenOption = new PromptForIntegerInputUseCase().execute("""
+                    _______________________________________________________________
 
-                     Agregar libro o novela
+                    Agregar libro o novela
                                      
                     ¿Qué deseas agregar?
                                      
@@ -37,20 +38,19 @@ public class ShowAddBookOrNovelMenuUseCase implements IUseCase<Object, Object> {
                                    
                     3 Ir al menú de atrás
                     0 Terminar programa
-                     
-                     """);
-            if (Option.isValid(option, 3)) {
-                int validatedOption = Integer.parseInt(option);
-                addBookOrNovelUseCases.get(validatedOption).execute();
+                                        
+                    Digite el número de la opción deseada:\s
+                     """, scanner);
+            if (IsValidMenuOption.execute(chosenOption, 3)) {
+                addBookOrNovelUseCases.get(chosenOption).execute();
             } else {
                 new PromptForStringInputUseCase().execute("""
                         _______________________________________________________________
 
-
                         Ha ingreso un valor incorrecto. El valor debe estar entre las
                         opciones mostradas.
-                                       
-                        """, scanner);
+                                                
+                        Ingresa cualquier valor para volver a intentarlo:\s""", scanner);
             }
         } while (true);
     }

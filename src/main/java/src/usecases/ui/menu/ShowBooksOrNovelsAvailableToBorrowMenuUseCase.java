@@ -1,10 +1,10 @@
 package src.usecases.ui.menu;
 
 import src.usecases.interfaces.IUseCase;
-import src.usecases.ui.prompt.AskForOptionMenuUseCase;
 import src.usecases.ui.ExitProgramUseCase;
+import src.usecases.ui.prompt.PromptForIntegerInputUseCase;
 import src.usecases.ui.prompt.PromptForStringInputUseCase;
-import src.validations.Option;
+import src.validations.IsValidMenuOption;
 
 import java.util.HashMap;
 import java.util.Scanner;
@@ -24,8 +24,8 @@ public class ShowBooksOrNovelsAvailableToBorrowMenuUseCase implements IUseCase<O
         addBookOrNovelUseCases.put(3, new ShowReaderMenuUseCase());
         addBookOrNovelUseCases.put(0, new ExitProgramUseCase());
         do {
-            String option = new AskForOptionMenuUseCase().execute("""
-                     _______________________________________________________________
+            Integer chosenOption = new PromptForIntegerInputUseCase().execute("""
+                    _______________________________________________________________
 
                     Libros o novelas disponibles
                                      
@@ -37,10 +37,9 @@ public class ShowBooksOrNovelsAvailableToBorrowMenuUseCase implements IUseCase<O
                     3 Ir al menú de atrás
                     0 Terminar programa
                      
-                     """);
-            if (Option.isValid(option, 3)) {
-                int validatedOption = Integer.parseInt(option);
-                addBookOrNovelUseCases.get(validatedOption).execute();
+                    Digite el número de la opción deseada:\s""", scanner);
+            if (IsValidMenuOption.execute(chosenOption, 3)) {
+                addBookOrNovelUseCases.get(chosenOption).execute();
             } else {
                 new PromptForStringInputUseCase().execute("""
                         _______________________________________________________________
@@ -49,7 +48,7 @@ public class ShowBooksOrNovelsAvailableToBorrowMenuUseCase implements IUseCase<O
                         Ha ingreso un valor incorrecto. El valor debe estar entre las
                         opciones mostradas.
                                        
-                        """, scanner);
+                        Ingresa cualquier valor para volver a intentarlo:\s""", scanner);
             }
         } while (true);
     }
