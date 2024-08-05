@@ -1,74 +1,102 @@
-# Biblioteca La Pingüinera
 
-Proyecto en consola realizado en Java para la administración de una biblioteca, usuarios y textos.
+# Library Management System
 
-- [Tecnologías](#tecnologías)
-- [Validaciones](#validaciones)
-- [Patrones_de_diseño](#patrones_de_diseño)
-- [Pruebas_unitarias](#pruebas_unitarias)
+![Java](https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=java&logoColor=white)
+![Maven](https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white)
+![JUnit](https://img.shields.io/badge/JUnit-25A162?style=for-the-badge&logo=junit5&logoColor=white)
+![Mockito](https://img.shields.io/badge/Mockito-DB7093?style=for-the-badge&logo=mockito&logoColor=white)
 
-## Tecnologías
+## About
 
-- Java
-- Maven
-- Mockito
-- JUnit
+**Library Management System** is a console-based project developed in Java for the administration of a library, including users and texts.
 
-## Validaciones
+This project utilizes various design patterns and includes unit tests to ensure functionality and reliability. It is built using Maven for dependency management and Mockito for mocking in unit tests.
 
-```console
-/src/main/java/src/dalidations/*
-```
+## Features
 
-## Patrones_de_diseño
+1. **User Management**: Add, update, and delete library users.
+2. **Text Management**: Add, update, and delete books and novels.
+3. **Design Patterns**: Implementation of Prototype and Command design patterns.
+4. **Unit Testing**: Comprehensive unit tests for various use cases.
 
-Se encuentran guardados en los ultimos commits de la rama test/designpatterns. También están presententes en esta rama development que es la más actualizada y donde todo funciona bien.
+## Installation
 
-A continuación donde están referenciados en esta rama:
+To run this project locally, follow these steps:
 
-Patrón asignado: Prototype.
+1. **Clone the repository:**
+    ```bash
+    git clone https://github.com/camilo6castell/library-manager.git
+    cd library-manager
+    ```
 
-Se encuentra presente en estos archivos:
+2. **Install dependencies:**
+    ```bash
+    mvn clean install
+    ```
 
-```console
-** Objetos con el método clone **
+3. **Run the application:**
+    ```bash
+    mvn exec:java -Dexec.mainClass="src.Main"
+    ```
 
-src/main/java/src/models/texts/Book.java
-src/main/java/src/models/texts/Novel.java
+## Design Patterns
 
-** implementación **
+### Prototype Pattern
 
-src/main/java/src/usecases/book/UpdateBookUseCase.java
-src/main/java/src/usecases/novel/UpdateNovelUseCase.java
-```
+The Prototype pattern is used to create copies of existing objects. It is implemented in the following files:
 
-Patrón escogido: Command.
+- **Objects with the `clone` method:**
+  ```plaintext
+  src/main/java/src/models/texts/Book.java
+  src/main/java/src/models/texts/Novel.java
+  ```
 
-Se encuentra presente en estos archivos:
+- **Implementation:**
+  ```plaintext
+  src/main/java/src/usecases/book/UpdateBookUseCase.java
+  src/main/java/src/usecases/novel/UpdateNovelUseCase.java
+  ```
 
-```console
+### Command Pattern
 
-** La interfaz Command **
+The Command pattern is used to encapsulate all information needed to perform an action or trigger an event. It is implemented in the following files:
 
-src/main/java/src/usecases/ui/menu/command/Command.java
+- **Command Interface:**
+  ```plaintext
+  src/main/java/src/usecases/ui/menu/command/Command.java
+  ```
 
-** El invocador **
+- **Invoker:**
+  ```plaintext
+  src/main/java/src/usecases/ui/menu/command/Invoker.java
+  ```
 
-src/main/java/src/usecases/ui/menu/command/Invoker.java
+- **Commands:**
+  ```plaintext
+  src/main/java/src/usecases/ui/menu/command/AdministratorCommand.java
+  src/main/java/src/usecases/ui/menu/command/AssistantCommand.java
+  src/main/java/src/usecases/ui/menu/command/ReaderCommand.java
+  ```
 
-** Los comandos **
+- **Implementation:**
+  ```plaintext
+  src/main/java/src/usecases/ui/menu/ShowLogInMenuUseCase.java
+  ```
 
-src/main/java/src/usecases/ui/menu/command/AdministratorCommand.java
-src/main/java/src/usecases/ui/menu/command/AssistantCommand.java
-src/main/java/src/usecases/ui/menu/command/ReaderCommand.java
+## Unit Tests
 
-** Se implementa **
-
-src/main/java/src/usecases/ui/menu/ShowLogInMenuUseCase.java
-```
-
-## Pruebas_unitarias
-
-```console
+Unit tests are located in the following directory:
+```plaintext
 src/test/java/usecases*
 ```
+
+## Contact
+
+Feel free to reach out to me through any of the following platforms:
+
+- [LinkedIn](https://www.linkedin.com/in/camilocastell/)
+- [GitHub](https://github.com/camilo6castell)
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
